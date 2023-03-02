@@ -7,8 +7,6 @@ const RegisterGame = () => {
     const dispatch = useDispatch();
     const addedGame = useSelector(store => store.gameReducer);
 
-    console.log(addedGame);
-
     // send game input to gameReducer and clear input
     const addGame = (event) => {
         event.preventDefault();

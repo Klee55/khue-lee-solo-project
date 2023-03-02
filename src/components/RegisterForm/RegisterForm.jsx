@@ -28,7 +28,7 @@ function RegisterForm() {
     });
   }; // end registerUser
 
-  
+
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
@@ -65,16 +65,19 @@ function RegisterForm() {
       <br></br>
       <RegisterGame />
       <div>
-      <br></br>
+        <br></br>
       </div>
       <RegisterAbout />
       <div>
+        <br></br>
       </div>
       <RegisterPlaystyle />
       <div>
+        <br></br>
       </div>
-      <RegisterTime /> 
+      <RegisterTime />
       <div>
+      <br></br>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
     </form>
