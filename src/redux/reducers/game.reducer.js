@@ -1,3 +1,5 @@
+
+// store games for game input on registration page
 const gameReducer = (state = [], action) => {
     switch (action.type) {
       case 'ADD_GAME':
@@ -9,6 +11,4 @@ const gameReducer = (state = [], action) => {
     }
   };
   
-  // user will be on the redux state at:
-  // state.user
   export default gameReducer;

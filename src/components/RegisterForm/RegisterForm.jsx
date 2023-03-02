@@ -8,11 +8,15 @@ import RegisterTime from './RegisterTime';
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const errors = useSelector((store) => store.errors);
-  const dispatch = useDispatch();
 
-  const registerUser = (event) => {
+  const errors = useSelector((store) => store.errors);
+  const about = useSelector((store) => store.aboutReducer);
+  const dispatch = useDispatch();
+  console.log(about);
+
+  const registerUser = (event, aboutProp) => {
     event.preventDefault();
+    console.log(aboutProp);
 
     dispatch({
       type: 'REGISTER',
@@ -22,6 +26,8 @@ function RegisterForm() {
       },
     });
   }; // end registerUser
+
+  
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
@@ -60,13 +66,13 @@ function RegisterForm() {
       <div>
       <br></br>
       </div>
-      <RegisterAbout />
+      <RegisterAbout aboutProp={registerUser} />
       <div>
       </div>
       <RegisterPlaystyle />
       <div>
       </div>
-      <RegisterTime />
+      <RegisterTime /> 
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
