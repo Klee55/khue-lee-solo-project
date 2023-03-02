@@ -3,6 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const RegisterGame = () => {
 
+    const [game, setGame] = useState('')
+    console.log(game);
+    const dispatch = useDispatch();
+    const addedGame = useSelector(store => store.gameReducer);
+
+    console.log(addedGame);
+
+
+    const addGame = (event) => {
+        event.preventDefault();
+
+        dispatch({
+            type: 'ADD_GAME',
+            payload: game
+        })
+    };
 
     return (
         <>
@@ -11,12 +27,21 @@ const RegisterGame = () => {
                 <input
                     type="text"
                     name="game"
-                    // value={username}
+                    value={game}
                     required
-                    // onChange={(event) => setUsername(event.target.value)}
+                    onChange={(event) => setGame(event.target.value)}
                 />
             </label>
-            <button>Add Game</button>
+            <button onClick={addGame}>
+                Add Game
+            </button>
+            <ul>
+                {addedGame.map((addedGame) => (
+                    <li key={addedGame}>
+                        {addedGame}
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }

@@ -55,16 +55,18 @@ function RegisterForm() {
           />
         </label>
       </div>
-        <RegisterGame />
+      <br></br>
+      <RegisterGame />
+      <div>
+      <br></br>
+      </div>
+      <RegisterAbout />
       <div>
       </div>
-        <RegisterAbout />
+      <RegisterPlaystyle />
       <div>
       </div>
-        <RegisterPlaystyle />
-      <div>
-      </div>
-        <RegisterTime />
+      <RegisterTime />
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
