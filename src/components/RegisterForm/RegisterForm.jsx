@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import RegisterGame from './RegisterGame';
+import RegisterAbout from './RegisterAbout';
+import RegisterPlaystyle from './RegisterPlaystyle';
+import RegisterTime from './RegisterTime';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -51,6 +55,16 @@ function RegisterForm() {
           />
         </label>
       </div>
+        <RegisterGame />
+      <div>
+      </div>
+        <RegisterAbout />
+      <div>
+      </div>
+        <RegisterPlaystyle />
+      <div>
+      </div>
+        <RegisterTime />
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
