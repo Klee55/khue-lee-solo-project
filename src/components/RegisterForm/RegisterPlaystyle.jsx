@@ -1,23 +1,55 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-const RegisterPlaystyle = () => {
+const RegisterGame = () => {
 
+    const [playstyle, setPlaystyle] = useState('')
+    const dispatch = useDispatch();
+    const addedPlaystyle = useSelector(store => store.playstyleReducer);
+
+    // send playstyle input to playstyleReducer and clear input
+    const addPlaystyle = (event) => {
+        event.preventDefault();
+        
+        dispatch({
+            type: 'ADD_PLAYSTYLE',
+            payload: playstyle
+        });
+        setPlaystyle('');
+    };
+
+    // remove selected playstyle when remove button is clicked
+    const removePlaystyle = (addedPlaystyle) => {
+        dispatch({
+            type: 'REMOVE_PLAYSTYLE',
+            payload: addedPlaystyle
+        });
+    };
 
     return (
         <>
-            <label htmlFor="game">
+            <label htmlFor="playstyle">
                 Playstyle:
                 <input
                     type="text"
-                    name="game"
-                    // value={username}
-                    required
-                    // onChange={(event) => setUsername(event.target.value)}
+                    name="playstyle"
+                    value={playstyle}
+                    // required
+                    onChange={(event) => setPlaystyle(event.target.value)}
                 />
             </label>
-            <button>Add</button>
+            <button onClick={addPlaystyle}>
+                Add
+            </button>
+            <ul>
+                {addedPlaystyle.map((addedPlaystyle) => (
+                    <li key={addedPlaystyle}>
+                        {addedPlaystyle}
+                        <button on onClick={() => removePlaystyle(addedPlaystyle)}>Remove</button>
+                    </li>
+                ))}
+            </ul>
         </>
     )
 }
-export default RegisterPlaystyle
+export default RegisterGame

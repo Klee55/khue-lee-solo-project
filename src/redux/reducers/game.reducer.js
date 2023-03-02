@@ -5,7 +5,8 @@ const gameReducer = (state = [], action) => {
       case 'ADD_GAME':
         return [...state, action.payload];
       case 'REMOVE_GAME':
-        return [];
+        return state.filter( state => state != action.payload )
+        // return state without action.payload or selected game when remove button is clicked in registration form
       default:
         return state;
     }

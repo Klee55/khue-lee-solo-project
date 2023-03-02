@@ -11,18 +11,19 @@ function RegisterForm() {
 
   const errors = useSelector((store) => store.errors);
   const about = useSelector((store) => store.aboutReducer);
+  const game = useSelector((store) => store.gameReducer);
   const dispatch = useDispatch();
-  console.log(about);
 
-  const registerUser = (event, aboutProp) => {
+  const registerUser = (event) => {
     event.preventDefault();
-    console.log(aboutProp);
 
     dispatch({
       type: 'REGISTER',
       payload: {
         username: username,
         password: password,
+        about: about,
+        game: game,
       },
     });
   }; // end registerUser
@@ -66,7 +67,7 @@ function RegisterForm() {
       <div>
       <br></br>
       </div>
-      <RegisterAbout aboutProp={registerUser} />
+      <RegisterAbout />
       <div>
       </div>
       <RegisterPlaystyle />
