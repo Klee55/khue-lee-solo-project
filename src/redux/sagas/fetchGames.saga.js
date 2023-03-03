@@ -5,7 +5,6 @@ import axios from 'axios';
 function* fetchGames() {
   try {
     // fetch all games
-    console.log('in fetch game saga');
     const games = yield axios.get('/api/game')
     console.log(games);
     yield put({ type: 'SET_GAMES', payload: games.data});

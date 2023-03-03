@@ -48,30 +48,4 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
-// route for game input from registration form
-router.post('/game', (req, res) => {
-  pool.connect()
-    .then(() => {
-      for (let game of req.body.game) {
-        const queryText = `INSERT INTO "games" (game)
-          VALUES ($1);`;
-        pool.query(queryText, [game])
-      }
-    })
-    .then(() => res.sendStatus(201))
-    .catch((err) => {
-      console.log('game registration failed:', err);
-      res.sendStatus(500);
-    });
-});
-
-// route for playstyle input from registration form
-router.post('/playstyle', (req, res) => {
-  const playstyle = req.body.playstyle;
-});
-
-// route for time input from registration form
-router.post('/time', (req, res) => {
-  const time = req.body.time;
-});
 module.exports = router;

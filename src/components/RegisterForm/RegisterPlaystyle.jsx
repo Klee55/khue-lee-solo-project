@@ -45,7 +45,7 @@ const RegisterGame = () => {
                 {addedPlaystyle.map((addedPlaystyle) => (
                     <li key={addedPlaystyle}>
                         {addedPlaystyle}
-                        <button on onClick={() => removePlaystyle(addedPlaystyle)}>Remove</button>
+                        <button onClick={() => removePlaystyle(addedPlaystyle)}>Remove</button>
                     </li>
                 ))}
             </ul>

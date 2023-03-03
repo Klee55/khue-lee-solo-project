@@ -14,8 +14,8 @@ const RegisterGame = () => {
       }, []);
 
     // send game input to gameReducer and clear input
-    const addGame = () => {
-        // event.preventDefault();
+    const addGame = (event) => {
+        event.preventDefault();
         dispatch({
             type: 'ADD_GAME',
             payload: game
