@@ -12,6 +12,8 @@ function RegisterForm() {
   const errors = useSelector((store) => store.errors);
   const about = useSelector((store) => store.aboutReducer);
   const game = useSelector((store) => store.gameReducer);
+  const playstyle = useSelector((store) => store.playstyleReducer)
+  const time = useSelector((store) => store.timeReducer);
   const dispatch = useDispatch();
 
   const registerUser = (event) => {
@@ -24,6 +26,8 @@ function RegisterForm() {
         password: password,
         about: about,
         game: game,
+        playstyle: playstyle,
+        time: time,
       },
     });
   }; // end registerUser
@@ -61,13 +65,13 @@ function RegisterForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-      </div>
-      <br></br>
-      <RegisterGame />
-      <div>
         <br></br>
       </div>
       <RegisterAbout />
+      <div>
+      </div>
+        <br></br>
+      <RegisterGame />
       <div>
         <br></br>
       </div>
