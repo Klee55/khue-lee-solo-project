@@ -34,7 +34,7 @@ const RegisterGame = () => {
         <>  
             <label htmlFor="game">
                 <select 
-                placeholder='pick color' 
+                // placeholder 
                 type="text"
                 value={game} 
                 onChange={(event) => setGame(event.target.value)}>
