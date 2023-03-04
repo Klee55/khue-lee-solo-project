@@ -2,8 +2,9 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
-import fetchGamesSaga from './fetchGames.saga';
-import fetchPlaystylesSaga from './fetchPlaystyles.saga';
+import gamesSaga from './games.saga';
+import playstylesSaga from './playstyles.saga';
+import timesSaga from './times.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -17,7 +18,8 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    fetchGamesSaga(),
-    fetchPlaystylesSaga(),
+    gamesSaga(),
+    playstylesSaga(),
+    timesSaga(),
   ]);
 }

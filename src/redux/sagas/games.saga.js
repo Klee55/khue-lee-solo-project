@@ -1,7 +1,7 @@
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-// worker Saga: will be fired on "REGISTER" actions
+// worker Saga: will be fired on "FETCH_GAMES" actions
 function* fetchGames() {
   try {
     // fetch all games
@@ -13,8 +13,8 @@ function* fetchGames() {
     }
 }
 
-function* fetchGamesSaga() {
+function* gamesSaga() {
   yield takeEvery('FETCH_GAMES', fetchGames);
 }
 
-export default fetchGamesSaga;
+export default gamesSaga;

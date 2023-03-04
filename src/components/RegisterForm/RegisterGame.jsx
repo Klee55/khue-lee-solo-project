@@ -33,6 +33,7 @@ const RegisterGame = () => {
     return (
         <>  
             <label htmlFor="game">
+                Game:  
                 <select 
                 // placeholder 
                 type="text"

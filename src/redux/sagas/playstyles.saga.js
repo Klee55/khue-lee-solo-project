@@ -12,8 +12,8 @@ function* fetchPlaystyles() {
     }
 }
 
-function* fetchPlaystylesSaga() {
+function* playstylesSaga() {
   yield takeEvery('FETCH_PLAYSTYLES', fetchPlaystyles);
 }
 
-export default fetchPlaystylesSaga;
+export default playstylesSaga;

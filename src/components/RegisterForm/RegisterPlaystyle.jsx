@@ -8,8 +8,6 @@ const RegisterGame = () => {
     const addedPlaystyle = useSelector(store => store.playstyleReducer);
     const playstyles = useSelector(store => store.fetchPlaystylesReducer);
 
-    console.log(playstyles);
-
     // fetch playstyles
     useEffect(() => {
         dispatch({ type: 'FETCH_PLAYSTYLES' });
@@ -22,7 +20,6 @@ const RegisterGame = () => {
             type: 'ADD_PLAYSTYLE',
             payload: playstyle
         });
-        setPlaystyle('');
     };
 
     // remove selected playstyle when remove button is clicked
@@ -36,6 +33,7 @@ const RegisterGame = () => {
     return (
         <>  
             <label htmlFor="playstyle">
+                Playstyle:
                 <select 
                 // placeholder
                 type="text"

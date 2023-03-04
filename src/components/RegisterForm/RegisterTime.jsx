@@ -3,19 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const RegisterTime = () => {
 
-    const [time, setTime] = useState('')
+    const [startTime, setStartTime] = useState('')
+    const [endTime, setEndTime] = useState('')
+
     const dispatch = useDispatch();
     const addedTime = useSelector(store => store.timeReducer);
 
     // send time input to timeReducer and clear input
     const addTime = (event) => {
         event.preventDefault();
-        
         dispatch({
             type: 'ADD_TIME',
-            payload: time
+            payload: [startTime, endTime]
         });
-        setTime('');
+        setStartTime('');
+        setEndTime('');
     };
 
     // remove selected time when remove button is clicked
@@ -28,19 +30,33 @@ const RegisterTime = () => {
 
     return (
         <>
-            <label htmlFor="time">
-                Time:
-                <input
-                    type="text"
-                    name="time"
-                    value={time}
-                    // required
-                    onChange={(event) => setTime(event.target.value)}
-                />
-            </label>
-            <button onClick={addTime}>
-                Add
-            </button>
+            <div>
+                <label htmlFor="start-time">
+                    Start Time:
+                    <input
+                        type="time"
+                        name="star-time"
+                        value={startTime}
+                        // required
+                        onChange={(event) => setStartTime(event.target.value)}
+                    />
+                </label>
+            </div>
+            <div>
+                <label htmlFor="end-time">
+                    End Time:
+                    <input
+                        type="time"
+                        name="end-time"
+                        value={endTime}
+                        // required
+                        onChange={(event) => setEndTime(event.target.value)}
+                    />
+                </label>
+                <button onClick={addTime}>
+                    Add Time
+                </button>
+            </div>
             <ul>
                 {addedTime.map((addedTime) => (
                     <li key={addedTime}>
