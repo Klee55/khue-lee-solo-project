@@ -9,6 +9,7 @@ const RegisterTime = () => {
     const dispatch = useDispatch();
     const addedTime = useSelector(store => store.timeReducer);
 
+
     // send time input to timeReducer and clear input
     const addTime = (event) => {
         event.preventDefault();
@@ -17,7 +18,6 @@ const RegisterTime = () => {
             payload: [startTime, endTime]
         });
         setStartTime('');
-        setEndTime('');
     };
 
     // remove selected time when remove button is clicked
@@ -60,7 +60,7 @@ const RegisterTime = () => {
             <ul>
                 {addedTime.map((addedTime) => (
                     <li key={addedTime}>
-                        {addedTime}
+                        {addedTime} To {addedTime}
                         <button onClick={() => removeTime(addedTime)}>Remove</button>
                     </li>
                 ))}

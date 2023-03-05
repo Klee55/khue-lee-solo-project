@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import RegisterGame from './RegisterGame';
-import RegisterAbout from './RegisterAbout';
-import RegisterPlaystyle from './RegisterPlaystyle';
-import RegisterTime from './RegisterTime';
+import RegisterGame from './RegisterGame/RegisterGame';
+import RegisterAbout from './RegisterAbout/RegisterAbout';
+import RegisterPlaystyle from './RegisterPlaystyle/RegisterPlaystyle';
+import RegisterTime from './RegisterTime/RegisterTime';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
