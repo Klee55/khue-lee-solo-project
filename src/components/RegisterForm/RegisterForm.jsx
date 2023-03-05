@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import RegisterGame from './RegisterGame/RegisterGame';
-import RegisterAbout from './RegisterAbout/RegisterAbout';
-import RegisterPlaystyle from './RegisterPlaystyle/RegisterPlaystyle';
-import RegisterTime from './RegisterTime/RegisterTime';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const errors = useSelector((store) => store.errors);
-  const about = useSelector((store) => store.aboutReducer);
-  const game = useSelector((store) => store.gameReducer);
-  const playstyle = useSelector((store) => store.playstyleReducer)
-  const time = useSelector((store) => store.timeReducer);
   const dispatch = useDispatch();
 
   const registerUser = (event) => {
@@ -24,10 +16,6 @@ function RegisterForm() {
       payload: {
         username: username,
         password: password,
-        about: about,
-        game: game,
-        playstyle: playstyle,
-        time: time,
       },
     });
   }; // end registerUser
@@ -65,23 +53,6 @@ function RegisterForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-        <br></br>
-      </div>
-      <RegisterAbout />
-      <div>
-      </div>
-        <br></br>
-      <RegisterGame />
-      <div>
-        <br></br>
-      </div>
-      <RegisterPlaystyle />
-      <div>
-        <br></br>
-      </div>
-      <RegisterTime />
-      <div>
-      <br></br>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
     </form>

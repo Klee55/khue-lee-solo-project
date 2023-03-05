@@ -15,7 +15,10 @@ const RegisterTime = () => {
         event.preventDefault();
         dispatch({
             type: 'ADD_TIME',
-            payload: [startTime, endTime]
+            payload: {
+                startTime: startTime,
+                endTime: endTime
+            }
         });
         setStartTime('');
     };
@@ -60,7 +63,7 @@ const RegisterTime = () => {
             <ul>
                 {addedTime.map((addedTime) => (
                     <li key={addedTime}>
-                        {addedTime} To {addedTime}
+                        {addedTime.startTime} - {addedTime.endTime}
                         <button onClick={() => removeTime(addedTime)}>Remove</button>
                     </li>
                 ))}
