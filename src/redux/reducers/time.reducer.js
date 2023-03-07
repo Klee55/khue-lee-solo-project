@@ -1,8 +1,6 @@
 
 
 const timeReducer = (state = [], action) => {
-console.log(action.payload);
-
   switch (action.type) {
     case 'ADD_TIME':
       return [...state, action.payload];
