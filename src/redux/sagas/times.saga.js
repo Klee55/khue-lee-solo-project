@@ -12,8 +12,17 @@ function* fetchTimes() {
     }
 }
 
+function* postTimes(action) {
+  try{
+    yield axios.post('/api/time', action.payload);
+  } catch (error) {
+      console.log('error with postTimes saga:', error);
+  }
+}
+
 function* timesSaga() {
   yield takeEvery('FETCH_TIMES', fetchTimes);
+  yield takeEvery('REGISTER_TIMES', postTimes);
 }
 
 export default timesSaga;

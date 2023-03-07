@@ -11,9 +11,10 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const games = useSelector((store) => store.gameReducer);
   const playstyles = useSelector((store) => store.playstyleReducer);
+  const times = useSelector((store) => store.timeReducer);
   const dispatch = useDispatch();
 
-  console.log(playstyles);
+  console.log(times);
 
   const completeProfile = () => {
     dispatch({
@@ -25,6 +26,11 @@ function UserPage() {
       type: "REGISTER_PLAYSTYLES",
       payload: playstyles
     });
+
+    dispatch({
+      type: "REGISTER_TIMES",
+      payload: times
+    })
   }
 
   return (

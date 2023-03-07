@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
         const userId = playstyle.user_id;
         const playstyleId = playstyle.playstyle_id;
         const queryText = `INSERT INTO "user_playstyles" ("user_id", "playstyle_id")
-      Values ($1, $2)`
+            Values ($1, $2)`
         pool.query(queryText, [userId, playstyleId]);
       }
     })

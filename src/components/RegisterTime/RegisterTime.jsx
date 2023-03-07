@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const RegisterTime = () => {
 
-    const [startTime, setStartTime] = useState('')
-    const [endTime, setEndTime] = useState('')
-
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
     const dispatch = useDispatch();
     const addedTime = useSelector(store => store.timeReducer);
+    const user = useSelector(store => store.user);
 
 
     // send time input to timeReducer and clear input
@@ -17,7 +17,8 @@ const RegisterTime = () => {
             type: 'ADD_TIME',
             payload: {
                 startTime: startTime,
-                endTime: endTime
+                endTime: endTime,
+                user_id: user.id
             }
         });
         setStartTime('');
@@ -62,7 +63,7 @@ const RegisterTime = () => {
             </div>
             <ul>
                 {addedTime.map((addedTime) => (
-                    <li key={addedTime}>
+                    <li key={addedTime.startTime}>
                         {addedTime.startTime} - {addedTime.endTime}
                         <button onClick={() => removeTime(addedTime)}>Remove</button>
                     </li>
