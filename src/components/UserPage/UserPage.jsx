@@ -9,14 +9,22 @@ import RegisterTime from '../RegisterTime/RegisterTime';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
-  const game = useSelector((store) => store.gameReducer);
+  const games = useSelector((store) => store.gameReducer);
+  const playstyles = useSelector((store) => store.playstyleReducer);
   const dispatch = useDispatch();
+
+  console.log(playstyles);
 
   const completeProfile = () => {
     dispatch({
       type: "REGISTER_GAMES",
-      payload: game
-    })
+      payload: games
+    });
+
+    dispatch({
+      type: "REGISTER_PLAYSTYLES",
+      payload: playstyles
+    });
   }
 
   return (
@@ -43,7 +51,7 @@ function UserPage() {
           Save
         </button>
       </div>
-      <br/>
+      <br />
       <LogOutButton className="btn" />
     </div>
   );

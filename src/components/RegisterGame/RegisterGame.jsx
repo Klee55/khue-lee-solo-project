@@ -12,8 +12,8 @@ const RegisterGame = () => {
 
     // set game and gameId on change
     const setState = (event) => {
-        let gameId = event.target.value;
-        let selectedGameArray = games.filter(item => item.game === gameId);
+        let game = event.target.value;
+        let selectedGameArray = games.filter(item => item.game === game);
         // Filter returns a list but should only have one match
         let selectedGame = selectedGameArray[0];
 

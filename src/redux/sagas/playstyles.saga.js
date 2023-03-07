@@ -1,5 +1,6 @@
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { func } from 'prop-types';
 
 // worker Saga: will be fired on "FETCH_PLAYSTYLES" actions
 function* fetchPlaystyles() {
@@ -12,8 +13,19 @@ function* fetchPlaystyles() {
     }
 }
 
+// fired off on "REGISTER_PLAYSTYLES"
+function* postPlaystyles(action) {
+ // post playstyles reducer to router
+  try {
+    yield axios.post('/api/playstyle', action.payload )
+  } catch (error) {
+    console.log('error with postPlaystyles:', error);
+  }
+}
+
 function* playstylesSaga() {
   yield takeEvery('FETCH_PLAYSTYLES', fetchPlaystyles);
+  yield takeEvery('REGISTER_PLAYSTYLES', postPlaystyles)
 }
 
 export default playstylesSaga;
