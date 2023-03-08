@@ -11,7 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const gameRouter = require('./routes/game.router');
 const playstyleRouter = require('./routes/playstyle.router');
-const timeRouter = require('./routes/time.router')
+const timeRouter = require('./routes/time.router');
 
 // Body parser middleware
 app.use(bodyParser.json());

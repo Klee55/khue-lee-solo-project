@@ -1,6 +1,7 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import RegisterGame from '../RegisterGame/RegisterGame';
 import RegisterAbout from '../RegisterAbout/RegisterAbout';
 import RegisterPlaystyle from '../RegisterPlaystyle/RegisterPlaystyle';
@@ -13,6 +14,7 @@ function UserPage() {
   const playstyles = useSelector((store) => store.playstyleReducer);
   const times = useSelector((store) => store.timeReducer);
   const dispatch = useDispatch();
+  const history = useHistory();
 
 
   const completeProfile = () => {
@@ -20,16 +22,15 @@ function UserPage() {
       type: "REGISTER_GAMES",
       payload: games
     });
-
     dispatch({
       type: "REGISTER_PLAYSTYLES",
       payload: playstyles
     });
-
     dispatch({
       type: "REGISTER_TIMES",
       payload: times
-    })
+    });
+    history.push('/home');
   }
 
   return (

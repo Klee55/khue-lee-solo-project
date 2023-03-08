@@ -33,6 +33,11 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.get('/profile', (req, res) => {
+  console.log('profile get request made');
+  // const queryText = 
+});
+
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
 // this middleware will run our POST if successful
