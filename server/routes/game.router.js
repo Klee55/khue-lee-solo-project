@@ -14,6 +14,23 @@ router.get('/', (req, res) => {
     });
 });
 
+// fetch all user's info from DB
+router.get('/profile/:userID', (req, res) => {
+  console.log('profile get request made:', req.params.userID);
+  const userID = req.params.userID;
+  const queryText = `SELECT "games"."game" FROM "user"
+    JOIN "user_games" ON "user"."id" = "user_games"."user_id"
+    JOIN "games" ON "games"."id" = "user_games"."game_id"
+    WHERE "user"."id" = $1;`
+  pool
+    .query(queryText, [userID])
+    .then((results) => res.send(results.rows))
+    .catch((err) => {
+      console.log('userGames get request failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
 // post selected games to DB
 router.post('/', (req, res) => {
 

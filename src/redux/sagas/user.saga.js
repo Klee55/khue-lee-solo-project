@@ -24,18 +24,8 @@ function* fetchUser() {
   }
 }
 
-function* fetchProfile() {
-  try {
-    console.log('inside fetchProfile saga');
-    yield axios.get('/api/user/profile');
-  } catch (error) {
-    console.log('fetchProfile saga failed:', error);
-  }
-}
-
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
-  yield takeLatest('FETCH_PROFILE', fetchProfile);
 }
 
 export default userSaga;

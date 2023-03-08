@@ -5,7 +5,7 @@ import axios from 'axios';
 function* fetchGames() {
   try {
     // fetch all games
-    const games = yield axios.get('/api/game')
+    const games = yield axios.get('/api/game');
     console.log(games);
     yield put({ type: 'SET_GAMES', payload: games.data });
   } catch (error) {
@@ -22,9 +22,21 @@ function* postGames(action) {
   }
 }
 
+function* fetchProfile(action) {
+  try {
+    const userId = action.payload;
+    const userGames = yield axios.get(`/api/game/profile/${userId}`);
+   
+    yield put({ type: 'SET_USER_GAMES', payload: userGames.data});
+  } catch (error) {
+    console.log('fetchProfile saga failed:', error);
+  }
+}
+
 function* gamesSaga() {
   yield takeEvery('FETCH_GAMES', fetchGames);
   yield takeEvery('REGISTER_GAMES', postGames);
+  yield takeLatest('FETCH_PROFILE', fetchProfile);
 }
 
 export default gamesSaga;
