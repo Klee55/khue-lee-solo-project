@@ -14,7 +14,6 @@ function UserPage() {
   const times = useSelector((store) => store.timeReducer);
   const dispatch = useDispatch();
 
-  console.log(times);
 
   const completeProfile = () => {
     dispatch({
