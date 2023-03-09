@@ -4,20 +4,35 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    console.log('fetch playstyles request made');
-    pool
-        .query('SELECT * FROM "playstyles";')
-        .then((results) => res.send(results.rows))
-        .catch((error) => {
-            console.log('Error fetching playstyles:', error);
-            res.sendStatus(500);
-        });
+  console.log('fetch playstyles request made');
+  pool
+    .query('SELECT * FROM "playstyles";')
+    .then((results) => res.send(results.rows))
+    .catch((error) => {
+      console.log('Error fetching playstyles:', error);
+      res.sendStatus(500);
+    });
 });
 
+// get all user's playstyles in DB
+router.get('/profile/:userId', (req, res) => {
+  const userId = req.params.userId
+  const queryText = `SELECT "playstyles"."style" FROM "user"
+  JOIN "user_playstyles" ON "user"."id" = "user_playstyles"."user_id"
+  JOIN "playstyles" ON "playstyles"."id" = "user_playstyles"."playstyle_id"
+  WHERE "user"."id" = $1;`;
+  pool
+    .query(queryText, [userId])
+    .then((results) => res.send(results.rows))
+    .catch((err) => {
+      console.log('userPlaystyles get request failed: ', err);
+      res.sendStatus(500);
+    });
+})
 
 router.post('/', (req, res) => {
 
-    pool
+  pool
     .connect()
     .then(() => {
       for (let playstyle of req.body) {
@@ -34,5 +49,6 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     });
 });
+
 
 module.exports = router;

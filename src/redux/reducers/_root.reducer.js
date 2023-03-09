@@ -8,6 +8,8 @@ import timeReducer from './time.reducer';
 import fetchGamesReducer from './fetchGames.reducer';
 import fetchPlaystylesReducer from './fetchPlaystyles.reducer';
 import userGamesReducer from './userGames.reducer';
+import userPlaystylesReducer from './userPlaystyles.reducer';
+import userTimesReducer from './userTimes.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +27,8 @@ const rootReducer = combineReducers({
   fetchGamesReducer,
   fetchPlaystylesReducer,
   userGamesReducer,
+  userPlaystylesReducer,
+  userTimesReducer,
 });
 
 export default rootReducer;

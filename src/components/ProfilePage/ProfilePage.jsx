@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import userPlaystylesReducer from '../../redux/reducers/userPlaystyles.reducer';
 
 
 const ProfilePage = () => {
@@ -9,9 +10,11 @@ const ProfilePage = () => {
     const history = useHistory();
     const user = useSelector((store) => store.user);
     const userGames = useSelector((store) => store.userGamesReducer);
+    const userPlaystyles = useSelector((store) => store.userPlaystylesReducer)
     const games = useSelector((store) => store.fetchGamesReducer);
+    
 
-    console.log ('user games:', games);
+    console.log ('user games:', userPlaystyles);
 
     useEffect(() => {
         dispatch({ 
@@ -24,11 +27,22 @@ const ProfilePage = () => {
     return (
         <div>
             <h1>Profile Page</h1>
-            <section>
+            <ul>
+                List of Games:
                 {userGames.map((userGame) => (
-                    <p>{userGame.game}</p>
+                    <li key={userGame.game}>
+                        {userGame.game}
+                    </li>
                 ))}
-            </section>
+            </ul>
+            <ul>
+                List of Playstyles:
+                {userPlaystyles.map((userPlaystyles) => (
+                    <li key={userPlaystyles.style}>
+                        {userPlaystyles.style}
+                    </li>
+                ))}
+            </ul>
 
         </div>
     )

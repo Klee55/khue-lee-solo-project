@@ -22,21 +22,21 @@ function* postGames(action) {
   }
 }
 
-function* fetchProfile(action) {
+function* fetchProfileGames(action) {
   try {
     const userId = action.payload;
     const userGames = yield axios.get(`/api/game/profile/${userId}`);
    
     yield put({ type: 'SET_USER_GAMES', payload: userGames.data});
   } catch (error) {
-    console.log('fetchProfile saga failed:', error);
+    console.log('fetchProfileGames saga failed:', error);
   }
 }
 
 function* gamesSaga() {
   yield takeEvery('FETCH_GAMES', fetchGames);
   yield takeEvery('REGISTER_GAMES', postGames);
-  yield takeLatest('FETCH_PROFILE', fetchProfile);
+  yield takeLatest('FETCH_PROFILE', fetchProfileGames);
 }
 
 export default gamesSaga;
