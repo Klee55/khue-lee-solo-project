@@ -38,7 +38,7 @@ const ProfilePage = () => {
                 <TimeList />
             </div>
             <div>
-                <button onClick={history.push('/edit')}>
+                <button onClick={() => history.push('/edit')}>
                     Edit Profile
                 </button>
             </div>

@@ -32,7 +32,6 @@ router.get('/profile/:userID', (req, res) => {
 
 // post selected games to DB
 router.post('/', (req, res) => {
-
   pool
     .connect()
     .then(() => {
@@ -50,6 +49,20 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+router.post('/userGame', (req, res) => {
+  const userId = req.body.user_id;
+  const gameId = req.body.game_id;
+  const queryText = `INSERT INTO "user_games" ("user_id", "game_id")
+      Values ($1, $2)`
+  pool
+    .query(queryText, [userId, gameId])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('post userGame request failed: ', err);
+      res.sendStatus(500);
+    });
+})
 
 
 module.exports = router;

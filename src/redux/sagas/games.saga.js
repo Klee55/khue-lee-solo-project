@@ -16,6 +16,7 @@ function* fetchGames() {
 function* postGames(action) {
   try {
     // add games to DB
+    console.log(action.payload);
     yield axios.post('/api/game', action.payload);
   } catch (error) {
     console.log('error with postGamesSaga:', error);
@@ -33,10 +34,22 @@ function* fetchProfileGames(action) {
   }
 }
 
+function* postUserGame(action) {
+  try {
+    // add one game to DB
+    console.log(action.payload);
+    yield axios.post('/api/game/userGame', action.payload);
+  } catch (error) {
+    console.log('error with postUserGame Saga:', error);
+  }
+
+}
+
 function* gamesSaga() {
   yield takeEvery('FETCH_GAMES', fetchGames);
   yield takeEvery('REGISTER_GAMES', postGames);
   yield takeLatest('FETCH_PROFILE', fetchProfileGames);
+  yield takeEvery('ADD_USER_GAME', postUserGame)
 }
 
 export default gamesSaga;
