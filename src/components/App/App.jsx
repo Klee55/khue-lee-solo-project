@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import EditForm from '../EditForm/EditForm';
 
 import './App.css';
 
@@ -72,7 +73,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows HomePage else shows LoginPage
             exact
             path="/home"
           >
@@ -80,11 +81,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows ProfilePage else shows LoginPage
             exact
             path="/profile"
           >
             <ProfilePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProfilePage else shows LoginPage
+            exact
+            path="/edit"
+          >
+            <EditForm />
           </ProtectedRoute>
 
           <Route

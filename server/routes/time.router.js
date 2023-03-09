@@ -5,8 +5,18 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    // GET route code here
+router.get('/profile/:userId', (req, res) => {
+    const userId = req.params.userId;
+    const queryText = `SELECT "times"."start_time", "times"."end_time" FROM "user"
+    JOIN "times" ON "user"."id" = "times"."user_id"
+    WHERE "user"."id" = $1;`;
+    pool
+    .query(queryText, [userId])
+    .then((results) => {res.send(results.rows)})
+    .catch((error) => {
+        console.log('error with userTime get request:', error);
+        res.sendStatus(500);
+    })
 });
 
 /**
