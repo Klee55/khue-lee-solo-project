@@ -2,46 +2,47 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 
-const EditGame = () => {
-    const games = useSelector((store) => store.fetchGamesReducer);
+const EditPlaystyle = () => {
+    const playstyles = useSelector((store) => store.fetchPlaystylesReducer);
     const user = useSelector(store => store.user);
-    const userGames = useSelector((store) => store.userGamesReducer);
-    const [matchedGameChoice, setMatchedGameChoice] = useState('')
-    const [gameId, setGameId] = useState('');
+    const userPlaystyles = useSelector((store) => store.userPlaystylesReducer);
+    const [matchedStyleChoice, setMatchedStyleChoice] = useState('')
+    const [playstyleId, setPlaystyleId] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
 
     const setState = (event) => {
         event.preventDefault();
 
-        let gameChoice = Number(event.target.value);
-        let selectedGameArray = userGames.filter(item => item.game_id === gameChoice);
-        let selectedGame = selectedGameArray[0];
+        let styleChoice = Number(event.target.value);
+        let selectedStyleArray = userPlaystyles.filter(item => item.playstyle_id === styleChoice);
+        let selectedStyle = selectedStyleArray[0];
 
-        setMatchedGameChoice(selectedGame);
-        setGameId(gameChoice);
+        setMatchedStyleChoice(selectedStyle);
+        setPlaystyleId(styleChoice);
     }
 
-    // fetch games on load
+    // fetch playstyles on load
     useEffect(() => {
-        dispatch({ type: 'FETCH_GAMES' });
+        dispatch({ type: 'FETCH_PLAYSTYLES' });
         dispatch({
             type: 'FETCH_PROFILE',
             payload: user.id
         });
     }, []);
 
-    // add to user's games
+    // add to user's playstyles
     const addGame = (event) => {
         event.preventDefault();
-        if (typeof matchedGameChoice !== 'undefined') {
-            return alert(' selected game already added')
+
+        if (typeof matchedStyleChoice !== 'undefined') {
+            return alert(' selected playstyle already added')
         } else {
             dispatch({
-                type: 'ADD_USER_GAME',
+                type: 'ADD_USER_PLAYSTYLE',
                 payload: {
                     user_id: user.id,
-                    game_id: Number(gameId)
+                    playstyle_id: Number(playstyleId)
                 }
             });
             dispatch({
@@ -54,42 +55,38 @@ const EditGame = () => {
 
     // remove game from list
     const removeGame = (userGame) => {
-        console.log('removeGame clicked', userGame);
-
         dispatch({
             type: 'REMOVE_USER_GAME',
             payload: userGame.game_id
         })
     }
 
-
-
     return (
         <>
             <div>
                 <label htmlFor="game">
-                    Game:
+                    Playstyles:
                     <select
                         type="text"
                         onChange={(event) => setState(event)}>
-                        {games.map((game) => (
-                            <option value={game.id} key={game.id}>
-                                {game.game}
+                        {playstyles.map((style) => (
+                            <option value={style.id} key={style.id}>
+                                {style.style}
                             </option>
                         ))}
                     </select>
                     <button onClick={(event) => addGame(event)}>
-                        Add Game
+                        Add Playstyle
                     </button>
                 </label>
             </div>
             <div>
                 <ul>
-                    List of Games:
-                    {userGames.map((userGame) => (
-                        <li key={userGame.game}>
-                            {userGame.game}
-                            <button onClick={() => removeGame(userGame)}>
+                    List of Playstyles:
+                    {userPlaystyles.map((userStyle) => (
+                        <li key={userStyle.style}>
+                            {userStyle.style}
+                            <button onClick={() => removeGame(userStyle)}>
                                 Remove
                             </button>
                         </li>
@@ -100,4 +97,4 @@ const EditGame = () => {
     )
 }
 
-export default EditGame;
+export default EditPlaystyle;

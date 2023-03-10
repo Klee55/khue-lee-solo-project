@@ -1,4 +1,4 @@
-import { put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { put, take, takeEvery, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import { func } from 'prop-types';
 
@@ -34,11 +34,21 @@ function* fetchProfilePlaystyles(action) {
   }
 }
 
+function* postUserPlaystyle(action) {
+  try {
+    console.log('postUserPlaystyle sage hit:', action.payload);
+    yield axios.post('/api/playstyle/userPlaystyle', action.payload);
+
+  } catch (error) {
+    console.log('postUserPlaystyle saga failed:', error);
+  }
+}
 
 function* playstylesSaga() {
   yield takeEvery('FETCH_PLAYSTYLES', fetchPlaystyles);
-  yield takeEvery('REGISTER_PLAYSTYLES', postPlaystyles)
-  yield takeEvery('FETCH_PROFILE', fetchProfilePlaystyles)
+  yield takeEvery('REGISTER_PLAYSTYLES', postPlaystyles);
+  yield takeEvery('FETCH_PROFILE', fetchProfilePlaystyles);
+  yield takeEvery('ADD_USER_PLAYSTYLE', postUserPlaystyle);
 }
 
 export default playstylesSaga;

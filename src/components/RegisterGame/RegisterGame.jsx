@@ -5,12 +5,11 @@ const RegisterGame = () => {
 
     const [game, setGame] = useState('');
     const [gameId, setGameId] = useState('');
-    const [matchedGameChoice, setMatchedGameChoice] = useState('');
-    const [gameObject, setGameObjecet] = useState('');
-    const dispatch = useDispatch();
+    const [matchedGameChoice, setMatchedGameChoice] = useState('')
     const addedGame = useSelector(store => store.gameReducer);
     const games = useSelector(store => store.fetchGamesReducer);
     const user = useSelector(store => store.user);
+    const dispatch = useDispatch();
 
     // set game and gameId on change
     const setState = (event) => {
@@ -35,7 +34,7 @@ const RegisterGame = () => {
         dispatch({ type: 'FETCH_GAMES' });
     }, []);
 
-    // send game input to gameReducer and clear input
+    // send game input to gameReducer
     const addGame = (event) => {
         event.preventDefault();
 

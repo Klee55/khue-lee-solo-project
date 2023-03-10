@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 // fetch all user's info from DB
 router.get('/profile/:userID', (req, res) => {
   const userId = req.params.userID;
-  const queryText = `SELECT "games"."game" FROM "user"
+  const queryText = `SELECT "games"."game", "user_games"."game_id" FROM "user"
     JOIN "user_games" ON "user"."id" = "user_games"."user_id"
     JOIN "games" ON "games"."id" = "user_games"."game_id"
     WHERE "user"."id" = $1;`;
