@@ -5,6 +5,8 @@ const RegisterGame = () => {
 
     const [game, setGame] = useState('');
     const [gameId, setGameId] = useState('');
+    const [matchedGameChoice, setMatchedGameChoice] = useState('');
+    const [gameObject, setGameObjecet] = useState('');
     const dispatch = useDispatch();
     const addedGame = useSelector(store => store.gameReducer);
     const games = useSelector(store => store.fetchGamesReducer);
@@ -12,13 +14,19 @@ const RegisterGame = () => {
 
     // set game and gameId on change
     const setState = (event) => {
-        let game = event.target.value;
-        let selectedGameArray = games.filter(item => item.game === game);
+        event.preventDefault();
+
+        let gameChoice = event.target.value;
+        let selectedGameArray = games.filter(item => item.game === gameChoice);
         // Filter returns a list but should only have one match
         let selectedGame = selectedGameArray[0];
+        // return game object if it's already in addedGame reducer
+        let selectedGameChoice = addedGame.filter(item => item.game === gameChoice);
+        let matchedGameChoice = selectedGameChoice[0];
 
         setGame(event.target.value);
         setGameId(selectedGame.id);
+        setMatchedGameChoice(matchedGameChoice);
 
     }
 
@@ -30,14 +38,20 @@ const RegisterGame = () => {
     // send game input to gameReducer and clear input
     const addGame = (event) => {
         event.preventDefault();
-        dispatch({
-            type: 'ADD_GAME',
-            payload: {
-                game: game,
-                user_id: user.id,
-                game_id: gameId
-            }
-        });
+
+        if (typeof matchedGameChoice !== 'undefined') {
+            return alert(' selected game already added')
+            // alert if game is already on added list
+        } else {
+            dispatch({
+                type: 'ADD_GAME',
+                payload: {
+                    game: game,
+                    user_id: user.id,
+                    game_id: gameId
+                }
+            });
+        }
     };
 
     // remove selected game when remove button is clicked

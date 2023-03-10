@@ -1,10 +1,12 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 const EditGame = () => {
     const games = useSelector((store) => store.fetchGamesReducer);
     const user = useSelector(store => store.user);
     const userGames = useSelector((store) => store.userGamesReducer);
+    const history = useHistory();
 
     
 
@@ -34,7 +36,18 @@ const EditGame = () => {
             type: 'FETCH_PROFILE',
             payload: user.id
         });
+        history.push('/edit');
     };
+
+    const removeGame = (event) => {
+        console.log('removeGame clicked');
+        event.preventDefault();
+        dispatch({ 
+            type: 'REMOVE_USER_GAME',
+            payload: Number(gameId)
+        })
+    }
+
 
 
     return (
@@ -63,7 +76,7 @@ const EditGame = () => {
                     {userGames.map((userGame) => (
                         <li key={userGame.game}>
                             {userGame.game}
-                            <button>
+                            <button onClick={(event) => removeGame(event)}>
                                 Remove
                             </button>
                         </li>

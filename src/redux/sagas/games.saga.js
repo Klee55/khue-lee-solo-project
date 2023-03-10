@@ -25,6 +25,7 @@ function* postGames(action) {
 
 function* fetchProfileGames(action) {
   try {
+    console.log('fetch profileGame saga hit');
     const userId = action.payload;
     const userGames = yield axios.get(`/api/game/profile/${userId}`);
    
