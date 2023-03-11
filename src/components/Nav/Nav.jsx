@@ -30,6 +30,10 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/home">
+              Real Home
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>

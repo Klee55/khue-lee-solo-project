@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from "react-redux"
 import EditGame from "./EditGame/EditGame";
 import EditPlaystyle from "./EditPlaystyle.jsx/EditPlaystyle";
 import EditTime from "./EditTime/EditTime";
-
+import EditUserAbout from "./EditUserAbout/EditUserAbout";
 
 const EditForm = () => {
 
     return (
         <>
         <h1>Edit Page</h1>
+        <div>
+            <EditUserAbout />
+        </div>
         <div>
             <EditGame />
         </div>

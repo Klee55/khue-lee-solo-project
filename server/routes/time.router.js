@@ -2,9 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+// fetch all user's times from DB
 router.get('/profile/:userId', (req, res) => {
     const userId = req.params.userId;
     const queryText = `SELECT "times"."id", "times"."start_time", "times"."end_time" FROM "user"
@@ -19,11 +17,8 @@ router.get('/profile/:userId', (req, res) => {
         })
 });
 
-/**
- * POST route template
- */
+// register times input from registration form into DB
 router.post('/', (req, res) => {
-
     pool
         .connect()
         .then(() => {
@@ -43,6 +38,7 @@ router.post('/', (req, res) => {
         });
 });
 
+// insert selected time in edit form into DB
 router.post('/userTime', (req, res) => {
     console.log('post userTime request made:', req.body);
     const userId = req.body.user_id;
@@ -57,5 +53,18 @@ router.post('/userTime', (req, res) => {
             console.log('userTime post quest failed:', err);
         });
 })
+
+// delete time from DB
+router.delete('/:timeId', (req, res) => {
+    console.log('delete time request made:', req.params);
+    const timeId = req.params.timeId;
+    const queryText = `DELETE FROM "times" WHERE "times"."id" = $1`
+    pool
+        .query(queryText, [timeId])
+        .then(() => res.sendStatus(200))
+        .catch((err) => {
+            console.log('delete time request failed:', err);
+        });
+});
 
 module.exports = router;

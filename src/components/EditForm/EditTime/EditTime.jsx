@@ -33,11 +33,12 @@ const EditTime = () => {
     };
 
     const removeTime = (userTime) => {
-        console.log('removeTime button clicked:', userTime);
+        // console.log('removeTime button clicked:', userTime);
         dispatch({
             type: 'REMOVE_USER_TIME',
             payload: userTime.id
         });
+        history.push('/edit');
     }
 
     return (
@@ -80,6 +81,9 @@ const EditTime = () => {
                     </li>
                 ))}
             </ul>
+            <button onClick={() => history.push('/profile')}>
+                Save
+            </button>
         </>
     )
 }

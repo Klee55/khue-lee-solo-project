@@ -44,6 +44,8 @@ function* postUserTime (action) {
 function* deleteUserTime (action) {
   try {
     console.log('deleteUserTime saga hit:', action.payload);
+    const timeId = action.payload;
+    yield axios.delete(`/api/time/${timeId}`);
   } catch (error) {
     console.log('deleteUserTime saga failed:', error);
   }
