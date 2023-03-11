@@ -1,37 +1,44 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux"
+import { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
-const RegisterTime = () => {
-
+const EditTime = () => {
+    const user = useSelector(store => store.user);
+    const userTimes = useSelector((store) => store.userTimesReducer);
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
+    const [matchedTimeChoice, setMatchedTimeChoice] = useState('')
+    const [timeId, setTimeId] = useState('');
+    const history = useHistory();
     const dispatch = useDispatch();
-    const addedTime = useSelector(store => store.timeReducer);
-    const user = useSelector(store => store.user);
 
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_PROFILE',
+            payload: user.id
+        });
+    }, []);
 
-    // send time input to timeReducer and clear input
     const addTime = (event) => {
         event.preventDefault();
         dispatch({
-            type: 'ADD_TIME',
+            type: 'ADD_USER_TIME',
             payload: {
                 startTime: startTime,
                 endTime: endTime,
                 user_id: user.id
             }
         });
-        setStartTime('');
-        setEndTime('');
+        history.push('/edit');
     };
 
-    // remove selected time when remove button is clicked
-    const removeTime = (addedTime) => {
+    const removeTime = (userTime) => {
+        console.log('removeTime button clicked:', userTime);
         dispatch({
-            type: 'REMOVE_TIME',
-            payload: addedTime
+            type: 'REMOVE_USER_TIME',
+            payload: userTime.id
         });
-    };
+    }
 
     return (
         <>
@@ -63,14 +70,18 @@ const RegisterTime = () => {
                 </button>
             </div>
             <ul>
-                {addedTime.map((addedTime) => (
-                    <li key={addedTime.startTime}>
-                        {addedTime.startTime} - {addedTime.endTime}
-                        <button onClick={() => removeTime(addedTime)}>Remove</button>
+                Availabilities:
+                {userTimes.map((userTime) => (
+                    <li key={userTime.start_time}>
+                        {userTime.start_time} To {userTime.end_time}
+                        <button onClick={() => removeTime(userTime)}>
+                            Remove
+                        </button>
                     </li>
                 ))}
             </ul>
         </>
     )
 }
-export default RegisterTime
+
+export default EditTime;

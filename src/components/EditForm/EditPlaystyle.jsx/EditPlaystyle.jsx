@@ -53,18 +53,19 @@ const EditPlaystyle = () => {
         };
     }
 
-    // remove game from list
+    // remove playstyle from list
     const removePlaystyle =(userStyle) => {
         dispatch({
             type: 'REMOVE_USER_PLAYSTYLE',
             payload: userStyle.playstyle_id
-        })
+        });
+        history.push('/edit');
     }
 
     return (
         <>
             <div>
-                <label htmlFor="game">
+                <label htmlFor="playstyle">
                     Playstyles:
                     <select
                         type="text"

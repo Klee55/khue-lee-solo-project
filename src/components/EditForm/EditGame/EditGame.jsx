@@ -44,10 +44,6 @@ const EditGame = () => {
                     game_id: Number(gameId)
                 }
             });
-            // dispatch({
-            //     type: 'FETCH_PROFILE',
-            //     payload: user.id
-            // });
             history.push('/edit');
         };
     }
@@ -60,8 +56,6 @@ const EditGame = () => {
         });
         history.push('/edit');
     }
-
-
 
     return (
         <>

@@ -20,6 +20,7 @@ function* postTimes(action) {
   }
 }
 
+// send GET request to server and get times data from DB
 function* fetchProfileTimes(action) {
   try {
     const userId = action.payload;
@@ -31,10 +32,29 @@ function* fetchProfileTimes(action) {
   }
 }
 
+// add selected time to user DB
+function* postUserTime (action) {
+  try {
+    yield axios.post('/api/time/userTime', action.payload);
+  } catch (error) {
+    console.log('postUserTime saga failed:', error);
+  }
+}
+
+function* deleteUserTime (action) {
+  try {
+    console.log('deleteUserTime saga hit:', action.payload);
+  } catch (error) {
+    console.log('deleteUserTime saga failed:', error);
+  }
+}
+
 function* timesSaga() {
   yield takeEvery('FETCH_TIMES', fetchTimes);
   yield takeEvery('REGISTER_TIMES', postTimes);
-  yield takeEvery('FETCH_PROFILE', fetchProfileTimes)
+  yield takeEvery('FETCH_PROFILE', fetchProfileTimes);
+  yield takeEvery('ADD_USER_TIME', postUserTime);
+  yield takeEvery('REMOVE_USER_TIME', deleteUserTime);
 }
 
 export default timesSaga;

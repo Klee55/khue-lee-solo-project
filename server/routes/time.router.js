@@ -7,16 +7,16 @@ const router = express.Router();
  */
 router.get('/profile/:userId', (req, res) => {
     const userId = req.params.userId;
-    const queryText = `SELECT "times"."start_time", "times"."end_time" FROM "user"
+    const queryText = `SELECT "times"."id", "times"."start_time", "times"."end_time" FROM "user"
     JOIN "times" ON "user"."id" = "times"."user_id"
     WHERE "user"."id" = $1;`;
     pool
-    .query(queryText, [userId])
-    .then((results) => {res.send(results.rows)})
-    .catch((error) => {
-        console.log('error with userTime get request:', error);
-        res.sendStatus(500);
-    })
+        .query(queryText, [userId])
+        .then((results) => { res.send(results.rows) })
+        .catch((error) => {
+            console.log('error with userTime get request:', error);
+            res.sendStatus(500);
+        })
 });
 
 /**
@@ -42,5 +42,20 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         });
 });
+
+router.post('/userTime', (req, res) => {
+    console.log('post userTime request made:', req.body);
+    const userId = req.body.user_id;
+    const startTime = req.body.startTime;
+    const endTme = req.body.endTime;
+    const queryText = `INSERT INTO "times" ("start_time", "end_time", "user_id")
+            VALUES ($1, $2, $3)`
+    pool
+        .query(queryText, [startTime, endTme, userId])
+        .then(() => res.sendStatus(200))
+        .catch((err) => {
+            console.log('userTime post quest failed:', err);
+        });
+})
 
 module.exports = router;

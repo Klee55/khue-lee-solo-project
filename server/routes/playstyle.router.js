@@ -64,5 +64,19 @@ router.post('/userPlaystyle', (req, res) => {
     });
 })
 
+router.delete('/:playstyleId', (req, res) => {
+  const playstyleId = Number(req.params.playstyleId);
+  const userId = req.user.id;
+  const queryText = `DELETE FROM "user_playstyles" 
+      WHERE "user_playstyles"."user_id" = $1 AND "user_playstyles"."playstyle_id" = $2;`;
+  pool
+    .query(queryText, [userId, playstyleId])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log('delete userPlaystyle request failed:', err);
+      res.sendStatus(500);
+    });
+});
+
 
 module.exports = router;

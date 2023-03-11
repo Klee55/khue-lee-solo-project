@@ -46,12 +46,9 @@ function* postUserGame(action) {
 
 function* deleteUserGame(action) {
   try {
-    console.log('delete game saga hit:', action.payload);
     // delete one game from DB
     const gameId = action.payload
-   
     yield axios.delete(`/api/game/${gameId}`);
-    yield ({type: 'FETCH_PROFILE'});
   } catch (error) {
     console.log('error with delete game sage;', error)
   }

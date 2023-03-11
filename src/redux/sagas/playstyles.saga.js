@@ -44,12 +44,22 @@ function* postUserPlaystyle(action) {
   }
 }
 
+function* deleteUserPlaystyle(action) {
+  try{
+    console.log('delete playstyle saga hit:', action.payload)
+    const playstyleId = action.payload;
+    yield axios.delete(`/api/playstyle/${playstyleId}`);
+  } catch (error) {
+    console.log('deleteUserPlaystyle saga failed:', error);
+  }
+}
+
 function* playstylesSaga() {
   yield takeEvery('FETCH_PLAYSTYLES', fetchPlaystyles);
   yield takeEvery('REGISTER_PLAYSTYLES', postPlaystyles);
   yield takeEvery('FETCH_PROFILE', fetchProfilePlaystyles);
   yield takeEvery('ADD_USER_PLAYSTYLE', postUserPlaystyle);
-  
+  yield takeEvery('REMOVE_USER_PLAYSTYLE', deleteUserPlaystyle);
 }
 
 export default playstylesSaga;
