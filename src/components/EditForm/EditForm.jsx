@@ -4,12 +4,6 @@ import EditPlaystyle from "./EditPlaystyle.jsx/EditPlaystyle";
 
 
 const EditForm = () => {
-    const dispatch = useDispatch();
-    const games = useSelector((store) => store.fetchGamesReducer);
-    const playstyles = useSelector((store) => store.fetchPlaystylesReducer)
-
-    console.log('games:', games);
-    console.log('playstyles:', playstyles);
 
     return (
         <>

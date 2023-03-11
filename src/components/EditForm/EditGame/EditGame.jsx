@@ -44,22 +44,21 @@ const EditGame = () => {
                     game_id: Number(gameId)
                 }
             });
-            dispatch({
-                type: 'FETCH_PROFILE',
-                payload: user.id
-            });
+            // dispatch({
+            //     type: 'FETCH_PROFILE',
+            //     payload: user.id
+            // });
             history.push('/edit');
         };
     }
 
     // remove game from list
     const removeGame = (userGame) => {
-        console.log('removeGame clicked', userGame);
-
         dispatch({
             type: 'REMOVE_USER_GAME',
             payload: userGame.game_id
-        })
+        });
+        history.push('/edit');
     }
 
 

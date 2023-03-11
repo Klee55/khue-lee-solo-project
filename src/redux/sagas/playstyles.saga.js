@@ -49,6 +49,7 @@ function* playstylesSaga() {
   yield takeEvery('REGISTER_PLAYSTYLES', postPlaystyles);
   yield takeEvery('FETCH_PROFILE', fetchProfilePlaystyles);
   yield takeEvery('ADD_USER_PLAYSTYLE', postUserPlaystyle);
+  
 }
 
 export default playstylesSaga;

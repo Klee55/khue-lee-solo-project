@@ -62,7 +62,21 @@ router.post('/userGame', (req, res) => {
       console.log('post userGame request failed: ', err);
       res.sendStatus(500);
     });
-})
+});
+
+router.delete('/:gameId', (req, res) => {
+  const game_id = Number(req.params.gameId);
+  const user_id = req.user.id;
+  const queryText = `DELETE FROM "user_games" 
+    WHERE "user_games"."user_id" = $1 AND "user_games"."game_id" = $2;`;
+  pool
+    .query(queryText, [user_id, game_id])
+    .then(() => res.sendStatus(201))
+    .catch((err) => {
+      console.log('delete game request failed:', err)
+      res.sendStatus(500);
+    })
+});
 
 
 module.exports = router;

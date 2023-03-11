@@ -32,7 +32,7 @@ const EditPlaystyle = () => {
     }, []);
 
     // add to user's playstyles
-    const addGame = (event) => {
+    const addPlaystyle = (event) => {
         event.preventDefault();
 
         if (typeof matchedStyleChoice !== 'undefined') {
@@ -54,10 +54,10 @@ const EditPlaystyle = () => {
     }
 
     // remove game from list
-    const removeGame = (userGame) => {
+    const removePlaystyle =(userStyle) => {
         dispatch({
-            type: 'REMOVE_USER_GAME',
-            payload: userGame.game_id
+            type: 'REMOVE_USER_PLAYSTYLE',
+            payload: userStyle.playstyle_id
         })
     }
 
@@ -75,7 +75,7 @@ const EditPlaystyle = () => {
                             </option>
                         ))}
                     </select>
-                    <button onClick={(event) => addGame(event)}>
+                    <button onClick={(event) => addPlaystyle(event)}>
                         Add Playstyle
                     </button>
                 </label>
@@ -86,7 +86,7 @@ const EditPlaystyle = () => {
                     {userPlaystyles.map((userStyle) => (
                         <li key={userStyle.style}>
                             {userStyle.style}
-                            <button onClick={() => removeGame(userStyle)}>
+                            <button onClick={() => removePlaystyle(userStyle)}>
                                 Remove
                             </button>
                         </li>
