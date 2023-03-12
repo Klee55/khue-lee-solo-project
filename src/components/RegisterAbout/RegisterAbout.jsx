@@ -1,27 +1,23 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const RegisterAbout = () => {
-    const [about] = useState('');
+    const about = useSelector((store) => store.aboutReducer);
     const dispatch = useDispatch();
 
     // send input to timeReducer
     const handleChange = (event) => {
         event.preventDefault();
-        dispatch({ type: 'SET_ABOUT', payload: event.target.value});
+        dispatch({ type: 'SET_ABOUT', payload: event.target.value });
     }
     return (
         <>
-            <label htmlFor="about">
-                About:
-                <input
-                    type="text"
-                    name="about"
-                    // value={about}
-                    required
-                    onChange={handleChange}
-                />
-            </label>
+            About:
+            <textarea
+                value={about}
+                onChange={(event) => handleChange(event)}
+            />
+
         </>
     )
 }

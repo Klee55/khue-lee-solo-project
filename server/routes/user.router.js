@@ -20,18 +20,32 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-  const about = req.body.about;
 
   const queryText = `INSERT INTO "user" (username, password, about)
-    VALUES ($1, $2, $3) RETURNING id`;
+    VALUES ($1, $2) RETURNING id`;
   pool
-    .query(queryText, [username, password, about])
+    .query(queryText, [username, password])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);
     });
 });
+
+
+// update user about into DB from edit page
+router.post('/about', (req, res) => {
+  console.log('upade about post request made:', req.body.about);
+  const about = req.body.about
+  const userId = req.user.id
+  const queryText = `UPDATE "user" SET "about" = $2 WHERE "user"."id" = $1;`;
+  pool
+      .query(queryText, [userId, about])
+      .then(() => res.sendStatus(200))
+      .catch((err) => {
+        console.log('useAbout put request failed:', err);
+      });
+})
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

@@ -2,21 +2,15 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 const HomePage = () => {
-
     const history = useHistory('/profile');
-
-    const viewProfilePage = () => {
-       
-        history.push('/profile');
-    }
 
     return (
         <>
             <h1>Home Page</h1>
-            <button>
+            <button onClick={() => history.push('/search')}>
                 Search Players
             </button>
-            <button onClick={viewProfilePage}>
+            <button onClick={() => history.push('/profile')}>
                 View Profile
             </button>
         </>

@@ -13,8 +13,11 @@ function UserPage() {
   const games = useSelector((store) => store.gameReducer);
   const playstyles = useSelector((store) => store.playstyleReducer);
   const times = useSelector((store) => store.timeReducer);
+  const about = useSelector((store) => store.aboutReducer);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  console.log(about);
 
 
   const completeProfile = () => {
@@ -30,6 +33,10 @@ function UserPage() {
       type: "REGISTER_TIMES",
       payload: times
     });
+    dispatch({
+      type: "SAVE_USER_ABOUT",
+      payload: about
+    })
     history.push('/home');
   }
 

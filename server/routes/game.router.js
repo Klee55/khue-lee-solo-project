@@ -32,6 +32,7 @@ router.get('/profile/:userID', (req, res) => {
 
 // post selected games to DB
 router.post('/', (req, res) => {
+  // console.log(req.body);
   pool
     .connect()
     .then(() => {

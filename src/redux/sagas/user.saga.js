@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchUser() {
@@ -19,13 +19,31 @@ function* fetchUser() {
     // with an id and username set the client-side user object to let
     // the client-side code know the user is logged in
     yield put({ type: 'SET_USER', payload: response.data });
+    console.log(response.data.about);
+    yield put({type: 'SET_USER_ABOUT', payload: response.data.about});
   } catch (error) {
     console.log('User get request failed', error);
   }
 }
 
+// update user about into DB
+function* saveUserAbout(action) {
+  try {
+    console.log(action.payload)
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    };
+    yield axios.post('/api/user/about', {about: action.payload});
+  } catch (error) {
+    console.log ('saveUserAbout saga failed:', error);
+  }
+}
+  
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeEvery('SAVE_USER_ABOUT', saveUserAbout);
 }
 
 export default userSaga;

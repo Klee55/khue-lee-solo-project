@@ -81,9 +81,6 @@ const EditTime = () => {
                     </li>
                 ))}
             </ul>
-            <button onClick={() => history.push('/profile')}>
-                Save
-            </button>
         </>
     )
 }

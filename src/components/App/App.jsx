@@ -22,9 +22,9 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import EditForm from '../EditForm/EditForm';
+import SearchPage from '../SearchPage/SearchPage';
 
 import './App.css';
-
 
 function App() {
   const dispatch = useDispatch();
@@ -89,11 +89,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows ProfilePage else shows LoginPage
+            // logged in shows Edit page else shows LoginPage
             exact
             path="/edit"
           >
             <EditForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Search page else shows LoginPage
+            exact
+            path="/search"
+          >
+            <SearchPage />
           </ProtectedRoute>
 
           <Route
