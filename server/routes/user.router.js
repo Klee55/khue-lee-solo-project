@@ -14,6 +14,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+// fetch usernames and about from user table
+router.get('/players', (req, res) => {
+  console.log('fetchPlayer get request made');
+  const queryText = `SELECT "id", "username", "about" FROM "user";`;
+  pool
+    .query(queryText)
+    .then((results) => {
+      console.log(results.rows);
+      res.send(results.rows)
+    })
+
+    .catch((err) => {
+      console.log('error with fetchPlayers', err);
+    });
+});
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
@@ -40,11 +56,11 @@ router.post('/about', (req, res) => {
   const userId = req.user.id
   const queryText = `UPDATE "user" SET "about" = $2 WHERE "user"."id" = $1;`;
   pool
-      .query(queryText, [userId, about])
-      .then(() => res.sendStatus(200))
-      .catch((err) => {
-        console.log('useAbout put request failed:', err);
-      });
+    .query(queryText, [userId, about])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log('useAbout put request failed:', err);
+    });
 })
 
 // Handles login form authenticate/login POST

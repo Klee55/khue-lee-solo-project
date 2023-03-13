@@ -39,11 +39,25 @@ function* saveUserAbout(action) {
     console.log ('saveUserAbout saga failed:', error);
   }
 }
+
+//fetch all users
+function* fetchPlayers() {
+  try {
+    console.log('fetchPlayers saga hit');
+    const response = yield axios.get('/api/user/players');
+    yield put({ type: 'SET_PLAYERS', payload: response.data});
+    console.log(response.data);
+
+  } catch (error) {
+    console.log('fetchPlayer saga failed:', error);
+  }
+}
   
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeEvery('SAVE_USER_ABOUT', saveUserAbout);
+  yield takeEvery('FETCH_PLAYERS', fetchPlayers);
 }
 
 export default userSaga;
