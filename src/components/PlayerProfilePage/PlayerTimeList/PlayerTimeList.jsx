@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-const TimeList = () => {
+const PlayerTimeList = () => {
     const userTimes = useSelector((store) => store.userTimesReducer);
 
     return (
@@ -17,4 +17,4 @@ const TimeList = () => {
     )
 }
 
-export default TimeList;
+export default PlayerTimeList;

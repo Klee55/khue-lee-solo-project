@@ -58,7 +58,7 @@ const EditGame = () => {
     }
 
     return (
-        <>
+        <div>
             <div>
                 <label htmlFor="game">
                     Game:
@@ -89,7 +89,7 @@ const EditGame = () => {
                     ))}
                 </ul>
             </div>
-        </>
+        </div>
     )
 }
 

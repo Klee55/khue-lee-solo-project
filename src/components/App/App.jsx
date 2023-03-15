@@ -23,7 +23,7 @@ import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import EditForm from '../EditForm/EditForm';
 import SearchPage from '../SearchPage/SearchPage';
-
+import PlayerProfilePage from '../PlayerProfilePage/PlayerProfilePage';
 import './App.css';
 
 function App() {
@@ -102,6 +102,14 @@ function App() {
             path="/search"
           >
             <SearchPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows PlayerProfile page else shows LoginPage
+            exact
+            path="/player/:id"
+          >
+            <PlayerProfilePage />
           </ProtectedRoute>
 
           <Route

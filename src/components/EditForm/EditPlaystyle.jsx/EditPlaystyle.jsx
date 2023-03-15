@@ -63,7 +63,7 @@ const EditPlaystyle = () => {
     }
 
     return (
-        <>
+        <div>
             <div>
                 <label htmlFor="playstyle">
                     Playstyles:
@@ -94,7 +94,7 @@ const EditPlaystyle = () => {
                     ))}
                 </ul>
             </div>
-        </>
+        </div>
     )
 }
 

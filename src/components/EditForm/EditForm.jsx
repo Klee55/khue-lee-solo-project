@@ -9,7 +9,7 @@ const EditForm = () => {
     const history = useHistory();
 
     return (
-        <>
+        <div>
             <h1>Edit Page</h1>
             <div>
                 <EditUserAbout />
@@ -26,7 +26,7 @@ const EditForm = () => {
             <button onClick={() => history.push('/profile')}>
                 Done
             </button>
-        </>
+        </div>
     )
 }
 

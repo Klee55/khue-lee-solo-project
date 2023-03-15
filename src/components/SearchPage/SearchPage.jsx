@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 
 const SearchPage = () => {
@@ -8,8 +9,20 @@ const SearchPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    useEffect(() => {
+        dispatch({ type: 'FETCH_PLAYERS' });
+    }, []);
 
-    console.log(players);
+    const viewPlayer = (player) => {
+        // console.log('viewPlayer button clicked', player);
+        // dispatch({
+        //     type: 'SET_ONE_PLAYER',
+        //     payload: player.id
+        // });
+        history.push(`/player/${player.id}`);
+    }
+
+
 
     return (
         <div>
@@ -20,13 +33,17 @@ const SearchPage = () => {
             <div>
                 <ul>
                     {players.map((player) => (
-                        <li>
+                        <li key={player.id}>
                             Player Avatar goes here
-                            <br/>
+                            <br />
                             Player Name: {player.username}
-                            <br/>
-                            <button>Add</button>
-                            <button>View Player</button>
+                            <br />
+                            <button onClick={() => addPlayer(player)}>
+                                Add
+                            </button>
+                            <button onClick={() => viewPlayer(player)}>
+                                View Player
+                            </button>
                         </li>
                     ))}
                 </ul>

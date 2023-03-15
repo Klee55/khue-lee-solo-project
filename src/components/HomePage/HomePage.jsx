@@ -16,7 +16,7 @@ const HomePage = () => {
     }
 
     return (
-        <>
+        <div>
             <h1>Home Page</h1>
             <button onClick={() => searchButton()}>
                 Search Players
@@ -24,7 +24,7 @@ const HomePage = () => {
             <button onClick={() => history.push('/profile')}>
                 View Profile
             </button>
-        </>
+        </div>
     )
 
 }

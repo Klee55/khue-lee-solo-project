@@ -50,7 +50,7 @@ const RegisterGame = () => {
     };
 
     return (
-        <>
+        <div>
             <label htmlFor="playstyle">
                 Playstyle:
                 <select
@@ -73,7 +73,7 @@ const RegisterGame = () => {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
 export default RegisterGame

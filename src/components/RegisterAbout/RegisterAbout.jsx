@@ -11,14 +11,14 @@ const RegisterAbout = () => {
         dispatch({ type: 'SET_ABOUT', payload: event.target.value });
     }
     return (
-        <>
+        <div>
             About:
             <textarea
                 value={about}
                 onChange={(event) => handleChange(event)}
             />
 
-        </>
+        </div>
     )
 }
 export default RegisterAbout

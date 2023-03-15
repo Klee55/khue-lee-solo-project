@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 
-const PlaystyleList = () => {
+const PlayerPlaystyleList = () => {
     const userPlaystyles = useSelector((store) => store.userPlaystylesReducer)
 
     return (
@@ -18,4 +18,4 @@ const PlaystyleList = () => {
     )
 }
 
-export default PlaystyleList;
+export default PlayerPlaystyleList;

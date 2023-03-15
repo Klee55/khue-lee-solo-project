@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-const GameList = () => {
+const PlayerGameList = () => {
     const userGames = useSelector((store) => store.userGamesReducer);
 
     return (
@@ -17,4 +17,4 @@ const GameList = () => {
     )
 }
 
-export default GameList;
+export default PlayerGameList;

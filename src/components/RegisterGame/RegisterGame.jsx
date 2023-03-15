@@ -62,7 +62,7 @@ const RegisterGame = () => {
     };
 
     return (
-        <>
+        <div>
             <label htmlFor="game">
                 Game:
                 <select
@@ -86,7 +86,7 @@ const RegisterGame = () => {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
 

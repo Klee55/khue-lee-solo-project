@@ -42,7 +42,7 @@ const EditTime = () => {
     }
 
     return (
-        <>
+        <div>
             <div>
                 <label htmlFor="start-time">
                     Start Time:
@@ -81,7 +81,7 @@ const EditTime = () => {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
 

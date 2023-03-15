@@ -34,7 +34,7 @@ const RegisterTime = () => {
     };
 
     return (
-        <>
+        <div>
             <div>
                 <label htmlFor="start-time">
                     Start Time:
@@ -70,7 +70,7 @@ const RegisterTime = () => {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }
 export default RegisterTime
