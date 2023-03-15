@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { runSaga } from 'redux-saga';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
@@ -43,13 +44,23 @@ function* saveUserAbout(action) {
 //fetch all users
 function* fetchPlayers() {
   try {
-    console.log('fetchPlayers saga hit');
+    // console.log('fetchPlayers saga hit');
     const response = yield axios.get('/api/user/players');
     yield put({ type: 'SET_PLAYERS', payload: response.data});
-    console.log(response.data);
-
   } catch (error) {
     console.log('fetchPlayer saga failed:', error);
+  }
+}
+// fetch on player info
+function* fetchOnePlayer(action) {
+  try {
+    console.log ('fetchOnePlayer saga hit', action.payload);
+    const id = action.payload;
+    const response = yield axios.get(`/api/user/player/${id}`);
+    console.log(response.data);
+    yield put({ type: 'SET_ONE_PLAYER', payload: response.data});
+  } catch (error) {
+    console.log('fetchOnePlayer saga failed:', error);
   }
 }
   
@@ -58,6 +69,7 @@ function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeEvery('SAVE_USER_ABOUT', saveUserAbout);
   yield takeEvery('FETCH_PLAYERS', fetchPlayers);
+  yield takeEvery('FETCH_ONE_PLAYER', fetchOnePlayer);
 }
 
 export default userSaga;

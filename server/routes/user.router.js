@@ -16,19 +16,31 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // fetch usernames and about from user table
 router.get('/players', (req, res) => {
-  console.log('fetchPlayer get request made');
-  const queryText = `SELECT "id", "username", "about" FROM "user";`;
+  // console.log('fetchPlayer get request made');
+  const queryText = `SELECT "id", "username" FROM "user";`;
   pool
     .query(queryText)
     .then((results) => {
-      console.log(results.rows);
       res.send(results.rows)
     })
-
     .catch((err) => {
       console.log('error with fetchPlayers', err);
     });
 });
+
+router.get('/player/:id', (req, res) => {
+  console.log('fetchOnePlayer get request made', req.params);
+  const id = Number(req.params.id);
+  const queryText = `SELECT "username", "about" FROM "user" WHERE "id" = $1`;
+  pool
+    .query(queryText, [id])
+    .then((results) => {
+      res.send(results.rows)
+    })
+    .catch((err) => {
+      console.log('error with fetchPlayers', err);
+    });
+})
 
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
