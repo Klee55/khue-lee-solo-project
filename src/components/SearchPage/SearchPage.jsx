@@ -5,12 +5,18 @@ import { useEffect } from "react";
 
 
 const SearchPage = () => {
-    const players = useSelector((store) => store.fetchPlayersReducer)
+    const players = useSelector((store) => store.fetchPlayersReducer);
+    const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const history = useHistory();
 
+    console.log(user);
+
     useEffect(() => {
-        dispatch({ type: 'FETCH_PLAYERS' });
+        dispatch({ 
+            type: 'FETCH_PLAYERS',
+            payload: user.id
+        });
     }, []);
 
     const viewPlayer = (player) => {

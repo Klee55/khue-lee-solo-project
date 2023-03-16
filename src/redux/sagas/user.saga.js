@@ -42,10 +42,11 @@ function* saveUserAbout(action) {
 }
 
 //fetch all users
-function* fetchPlayers() {
+function* fetchPlayers(action) {
   try {
-    // console.log('fetchPlayers saga hit');
-    const response = yield axios.get('/api/user/players');
+    console.log('fetchPlayers saga hit', action.payload);
+    const id = action.payload;
+    const response = yield axios.get(`/api/user/players/${id}`);
     yield put({ type: 'SET_PLAYERS', payload: response.data});
   } catch (error) {
     console.log('fetchPlayer saga failed:', error);

@@ -15,11 +15,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 // fetch usernames and about from user table
-router.get('/players', (req, res) => {
-  // console.log('fetchPlayer get request made');
-  const queryText = `SELECT "id", "username" FROM "user";`;
+router.get('/players/:id', (req, res) => {
+  console.log('fetchPlayer get request made', req.params);
+  const id = Number(req.params.id);
+  const queryText = `SELECT "id", "username" FROM "user" EXCEPT SELECT "id", "username" FROM "user" WHERE "id" = $1;`;
   pool
-    .query(queryText)
+    .query(queryText, [id])
     .then((results) => {
       res.send(results.rows)
     })
