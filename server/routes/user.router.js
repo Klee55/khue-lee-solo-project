@@ -43,6 +43,19 @@ router.get('/player/:id', (req, res) => {
     });
 })
 
+// fetch friends from DB
+router.get('/friend/:id', (req, res) => {
+  console.log('fetchFriend get request made', req.params);
+  const id = Number(req.params.id);
+  const queryText = `SELECT "player_id", "username" FROM "friend_list" WHERE "user_id" = $1;`;
+  pool
+    .query(queryText, [id])
+    .then((results) => res.send(results.rows))
+    .catch((err) => {
+      console.log('error with fetchFriend get request:', err);
+    })
+})
+
 router.post('/player', (req, res) => {
   console.log('addPlayer post request made:', req.body);
   const playerId = req.body.id;

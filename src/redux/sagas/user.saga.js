@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { bindActionCreators } from 'redux';
 import { runSaga } from 'redux-saga';
 import { put, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
@@ -21,7 +22,7 @@ function* fetchUser() {
     // the client-side code know the user is logged in
     yield put({ type: 'SET_USER', payload: response.data });
     console.log(response.data.about);
-    yield put({type: 'SET_USER_ABOUT', payload: response.data.about});
+    yield put({ type: 'SET_USER_ABOUT', payload: response.data.about });
   } catch (error) {
     console.log('User get request failed', error);
   }
@@ -35,9 +36,9 @@ function* saveUserAbout(action) {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     };
-    yield axios.post('/api/user/about', {about: action.payload});
+    yield axios.post('/api/user/about', { about: action.payload });
   } catch (error) {
-    console.log ('saveUserAbout saga failed:', error);
+    console.log('saveUserAbout saga failed:', error);
   }
 }
 
@@ -47,7 +48,7 @@ function* fetchPlayers(action) {
     console.log('fetchPlayers saga hit', action.payload);
     const id = action.payload;
     const response = yield axios.get(`/api/user/players/${id}`);
-    yield put({ type: 'SET_PLAYERS', payload: response.data});
+    yield put({ type: 'SET_PLAYERS', payload: response.data });
   } catch (error) {
     console.log('fetchPlayer saga failed:', error);
   }
@@ -59,14 +60,14 @@ function* fetchOnePlayer(action) {
     const id = action.payload;
     const response = yield axios.get(`/api/user/player/${id}`);
     // console.log(response.data);
-    yield put({ type: 'SET_ONE_PLAYER', payload: response.data});
+    yield put({ type: 'SET_ONE_PLAYER', payload: response.data });
   } catch (error) {
     console.log('fetchOnePlayer saga failed:', error);
   }
 }
 
 // add player to friend list
-function* addPlayer (action) {
+function* addPlayer(action) {
   try {
     console.log('addPlayer saga hit', action.payload);
     yield axios.post('/api/user/player', action.payload);
@@ -74,7 +75,19 @@ function* addPlayer (action) {
     console.log('error with addPlayer saga:', error);
   }
 }
-  
+
+// fetch friends from DB
+function* fetchFriend(action) {
+  try {
+    console.log('fetchFriend saga hit', action.payload);
+    const id = action.payload;
+    const response = yield axios.get(`/api/user/friend/${id}`);
+    yield put({ type: 'SET_FRIEND', payload: response.data });
+  } catch (error) {
+    console.log('error with fetchFriend saga:', error);
+  }
+}
+
 
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
@@ -82,6 +95,7 @@ function* userSaga() {
   yield takeEvery('FETCH_PLAYERS', fetchPlayers);
   yield takeEvery('FETCH_ONE_PLAYER', fetchOnePlayer);
   yield takeEvery('ADD_PLAYER', addPlayer);
+  yield takeEvery('FETCH_PROFILE', fetchFriend);
 }
 
 export default userSaga;

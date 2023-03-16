@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import GameList from './GameList/GameList';
 import PlaystyleList from './PlaystyleList/PlaystyleList';
 import TimeList from './TimeList/TimeList';
+import FriendList from './FriendList/FriendList';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -27,6 +28,9 @@ const ProfilePage = () => {
                 <h1>Profile Page</h1>
                 <h2>{user.username}</h2>
                 <p>{user.about}</p>
+            </div>
+            <div>
+                <FriendList />
             </div>
             <div>
                 <GameList />
