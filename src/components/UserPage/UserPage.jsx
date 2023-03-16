@@ -44,7 +44,7 @@ function UserPage() {
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
-      <from>
+      <form>
         <h3>Your profile is not complete:</h3>
         <div>
           <RegisterAbout />
@@ -58,7 +58,7 @@ function UserPage() {
         <div>
           <RegisterTime />
         </div>
-      </from>
+      </form>
       <div>
         <button onClick={completeProfile}>
           Save

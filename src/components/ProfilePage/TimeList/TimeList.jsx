@@ -9,7 +9,7 @@ const TimeList = () => {
                 Availabilities:
                 {userTimes.map((userTime) => (
                     <li key={userTime.start_time}>
-                        {userTime.start_time} To {userTime.end_time}
+                        {userTime.day}: {userTime.start_time} - {userTime.end_time}
                     </li>
                 ))}
             </ul>

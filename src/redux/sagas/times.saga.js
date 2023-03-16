@@ -35,6 +35,7 @@ function* fetchProfileTimes(action) {
 // add selected time to user DB
 function* postUserTime (action) {
   try {
+    console.log(action.payload);
     yield axios.post('/api/time/userTime', action.payload);
   } catch (error) {
     console.log('postUserTime saga failed:', error);

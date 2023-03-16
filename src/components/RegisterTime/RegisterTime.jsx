@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const RegisterTime = () => {
 
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
+    const [day, setDay] = useState('');
     const dispatch = useDispatch();
     const addedTime = useSelector(store => store.timeReducer);
     const user = useSelector(store => store.user);
+    const days = useSelector(store => store.dayReducer);
 
+    // fetch days on load
+    useEffect(() => {
+        dispatch({ type: 'FETCH_DAYS' });
+    }, []);
 
     // send time input to timeReducer and clear input
     const addTime = (event) => {
@@ -16,6 +22,7 @@ const RegisterTime = () => {
         dispatch({
             type: 'ADD_TIME',
             payload: {
+                day: day,
                 startTime: startTime,
                 endTime: endTime,
                 user_id: user.id
@@ -36,10 +43,26 @@ const RegisterTime = () => {
     return (
         <div>
             <div>
+                <label htmlFor="day">
+                    Day:
+                    <select
+                        // placeholder 
+                        type="text"
+                        value={day}
+                        onChange={(event) => setDay(event.target.value)}>
+                        {days.map((day) => (
+                            <option key={day.id}>
+                                {day.day}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+            </div>
+            <div>
                 <label htmlFor="start-time">
                     Start Time:
                     <input
-                        type="time"
+                        type="text"
                         name="star-time"
                         value={startTime}
                         // required
@@ -51,7 +74,7 @@ const RegisterTime = () => {
                 <label htmlFor="end-time">
                     End Time:
                     <input
-                        type="time"
+                        type="text"
                         name="end-time"
                         value={endTime}
                         // required
@@ -59,13 +82,13 @@ const RegisterTime = () => {
                     />
                 </label>
                 <button onClick={addTime}>
-                    Add Time
+                    Add Day and Time
                 </button>
             </div>
             <ul>
                 {addedTime.map((addedTime) => (
-                    <li key={addedTime.startTime}>
-                        {addedTime.startTime} - {addedTime.endTime}
+                    <li key={addedTime.day}>
+                        {addedTime.day}: {addedTime.startTime} - {addedTime.endTime}
                         <button onClick={() => removeTime(addedTime)}>Remove</button>
                     </li>
                 ))}

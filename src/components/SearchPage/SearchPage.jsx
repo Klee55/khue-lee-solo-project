@@ -20,11 +20,6 @@ const SearchPage = () => {
     }, []);
 
     const viewPlayer = (player) => {
-        // console.log('viewPlayer button clicked', player);
-        // dispatch({
-        //     type: 'SET_ONE_PLAYER',
-        //     payload: player.id
-        // });
         history.push(`/player/${player.id}`);
     }
 
@@ -32,10 +27,6 @@ const SearchPage = () => {
 
     return (
         <div>
-            {/* <h1>Search Page</h1>
-            <button onClick={() => searchButton()}>
-                Search
-            </button> */}
             <div>
                 <ul>
                     {players.map((player) => (

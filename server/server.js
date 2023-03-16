@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const gameRouter = require('./routes/game.router');
 const playstyleRouter = require('./routes/playstyle.router');
 const timeRouter = require('./routes/time.router');
+const dayRouter = require('./routes/day.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/game', gameRouter);
 app.use('/api/playstyle', playstyleRouter)
 app.use('/api/time', timeRouter)
+app.use('/api/day', dayRouter);
 
 // Serve static files
 app.use(express.static('build'));

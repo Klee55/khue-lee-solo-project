@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-  console.log('fetch playstyles request made');
+  // console.log('fetch playstyles request made');
   pool
     .query('SELECT * FROM "playstyles";')
     .then((results) => res.send(results.rows))
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/userPlaystyle', (req, res) => {
-  console.log('post userPlaystyle request made', req.body);
+  // console.log('post userPlaystyle request made', req.body);
   const userId = req.body.user_id;
   const playstyleId = req.body.playstyle_id;
   const queryText = `INSERT INTO "user_playstyles" ("user_id", "playstyle_id")

@@ -13,6 +13,7 @@ import userTimesReducer from './userTimes.reducer';
 import userAboutReducer from './userAbout.reducer';
 import fetchPlayersReducer from './fetchPlayers.reducer';
 import onePlayerReducer from './onePlayer.reducer';
+import dayReducer from './day.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   aboutReducer,
   playstyleReducer,
   timeReducer,
+  dayReducer,
   fetchGamesReducer,
   fetchPlaystylesReducer,
   userGamesReducer,
