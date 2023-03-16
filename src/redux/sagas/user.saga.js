@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { runSaga } from 'redux-saga';
-import { put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { put, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_USER" actions
 function* fetchUser() {
@@ -55,13 +55,23 @@ function* fetchPlayers(action) {
 // fetch on player info
 function* fetchOnePlayer(action) {
   try {
-    console.log ('fetchOnePlayer saga hit', action.payload);
+    // console.log ('fetchOnePlayer saga hit', action.payload);
     const id = action.payload;
     const response = yield axios.get(`/api/user/player/${id}`);
-    console.log(response.data);
+    // console.log(response.data);
     yield put({ type: 'SET_ONE_PLAYER', payload: response.data});
   } catch (error) {
     console.log('fetchOnePlayer saga failed:', error);
+  }
+}
+
+// add player to friend list
+function* addPlayer (action) {
+  try {
+    console.log('addPlayer saga hit', action.payload);
+    yield axios.post('/api/user/player', action.payload);
+  } catch (error) {
+    console.log('error with addPlayer saga:', error);
   }
 }
   
@@ -71,6 +81,7 @@ function* userSaga() {
   yield takeEvery('SAVE_USER_ABOUT', saveUserAbout);
   yield takeEvery('FETCH_PLAYERS', fetchPlayers);
   yield takeEvery('FETCH_ONE_PLAYER', fetchOnePlayer);
+  yield takeEvery('ADD_PLAYER', addPlayer);
 }
 
 export default userSaga;

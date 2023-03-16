@@ -25,8 +25,13 @@ const SearchPage = () => {
     }
 
     // add player to friendlist
-    const addPlayer = () => {
-        console.log('addPlayer button clicked');
+    const addPlayer = (player) => {
+        console.log('addPlayer button clicked', player);
+        dispatch({
+            type: 'ADD_PLAYER',
+            payload: player
+        });
+        alert('Player added to friend list');
     }
 
 

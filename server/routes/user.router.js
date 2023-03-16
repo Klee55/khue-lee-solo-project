@@ -30,7 +30,7 @@ router.get('/players/:id', (req, res) => {
 });
 
 router.get('/player/:id', (req, res) => {
-  console.log('fetchOnePlayer get request made', req.params);
+  // console.log('fetchOnePlayer get request made', req.params);
   const id = Number(req.params.id);
   const queryText = `SELECT "username", "about" FROM "user" WHERE "id" = $1`;
   pool
@@ -42,6 +42,21 @@ router.get('/player/:id', (req, res) => {
       console.log('error with fetchPlayers', err);
     });
 })
+
+router.post('/player', (req, res) => {
+  console.log('addPlayer post request made:', req.body);
+  const playerId = req.body.id;
+  const username = req.body.username;
+  const userId = req.user.id;
+  const queryText = `INSERT INTO "friend_list" ("player_id", "username", "user_id")
+      VALUES ($1, $2, $3);`;
+  pool
+    .query(queryText, [playerId, username, userId])
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log('error with addPlayer post request:', err);
+    });
+});
 
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
