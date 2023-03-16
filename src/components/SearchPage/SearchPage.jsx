@@ -19,8 +19,14 @@ const SearchPage = () => {
         });
     }, []);
 
+    // go player profile on clicked
     const viewPlayer = (player) => {
         history.push(`/player/${player.id}`);
+    }
+
+    // add player to friendlist
+    const addPlayer = () => {
+        console.log('addPlayer button clicked');
     }
 
 

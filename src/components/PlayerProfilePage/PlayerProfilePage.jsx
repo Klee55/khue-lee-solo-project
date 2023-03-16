@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PlayerGameList from './PlayerGameList/PlayerGameList';
@@ -8,12 +8,8 @@ import PlayerTimeList from './PlayerTimeList/PlayerTimeList';
 
 const PlayerProfilePage = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const player = useSelector((store) => store.onePlayerReducer);
     const { id } = useParams();
-
-    console.log('player info', id);
-    console.log('one player indo', player);
 
     useEffect(() => {
         dispatch({
@@ -30,7 +26,7 @@ const PlayerProfilePage = () => {
         <div>
             <h1>Player Page</h1>
             {player.map((player) => (
-                <div>
+                <div key={player.username}>
                     <h2>{player.username}</h2>
                     <p>{player.about}</p>
                 </div>
@@ -45,9 +41,7 @@ const PlayerProfilePage = () => {
                 <PlayerTimeList />
             </div>
         </div>
-
     )
-
 }
 
 
