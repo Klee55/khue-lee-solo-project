@@ -6,11 +6,11 @@ const GameList = () => {
     return (
         <div>
             <ul>
-                List of Games:
+                <h3>Games</h3>
                 {userGames.map((userGame) => (
-                    <li key={userGame.game}>
+                    <p key={userGame.game}>
                         {userGame.game}
-                    </li>
+                    </p>
                 ))}
             </ul>
         </div>

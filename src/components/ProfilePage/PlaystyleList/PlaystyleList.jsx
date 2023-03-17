@@ -7,11 +7,11 @@ const PlaystyleList = () => {
     return (
         <div>
             <ul>
-                List of Playstyles:
+                <h3>Playstyles</h3>
                 {userPlaystyles.map((userPlaystyle) => (
-                    <li key={userPlaystyle.style}>
+                    <p key={userPlaystyle.style}>
                         {userPlaystyle.style}
-                    </li>
+                    </p>
                 ))}
             </ul>
         </div>

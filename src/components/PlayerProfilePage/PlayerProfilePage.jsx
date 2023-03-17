@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PlayerGameList from './PlayerGameList/PlayerGameList';
 import PlayerPlaystyleList from './PlayerPlaystyleList/PlayerPlaystyleList';
 import PlayerTimeList from './PlayerTimeList/PlayerTimeList';
+import './PlayerProfilePage.css';
 
 const PlayerProfilePage = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const PlayerProfilePage = () => {
     }, []);
 
     return (
-        <div>
+        <div className='profile'>
             <h1>Player Page</h1>
             {player.map((player) => (
                 <div key={player.username}>

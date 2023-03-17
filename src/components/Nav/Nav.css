@@ -3,28 +3,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  flex-grow:inherit;
 
   margin: 0 0 30px;
-  background-color: #00acb0;
+  background-color: white;
   overflow: hidden;
+  color:darkviolet;
 }
 
 .nav a {
   text-decoration: none;
 }
 
-.nav-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #f2f2f2;
-  padding-left: 10px;
-  margin: 0;
+.userAvatar {
+  border: solid black;
+  border-width: 2px;
+  background-color: purple;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
 }
 
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  background-color: #00acb0;
+  background-color: purple;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -35,8 +39,39 @@
   border: none;
   cursor: pointer;
   outline: 0;
+  
 }
 
 .navLink:hover {
-  background-color: #008183;
+  background-color:blueviolet;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+}
+
+.gaming {
+  margin-right: 10px;
+}
+
+.buddy {
+  margin-left: 10px;
+}
+
+.nameIcon {
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+  text-align: center;
+  font-size: x-large;
+}
+
+.iconImg {
+  width: 40px;
+  height: 40px;
+}
+
+.menu {
+  background-color: blueviolet;
 }

@@ -6,6 +6,8 @@ import GameList from './GameList/GameList';
 import PlaystyleList from './PlaystyleList/PlaystyleList';
 import TimeList from './TimeList/TimeList';
 import FriendList from './FriendList/FriendList';
+import avatar from './deadpool.png'
+import './ProfilePage.css';
 
 const ProfilePage = () => {
     const dispatch = useDispatch();
@@ -23,30 +25,32 @@ const ProfilePage = () => {
     }, []);
 
     return (
-        <>
-            <div>
-                <h1>Profile Page</h1>
-                <h2>{user.username}</h2>
-                <p>{user.about}</p>
+        <div className='profile'>
+            <div className='avatar'>
+                <div className='avatarImg'>
+                <img  src={avatar} />
+                </div>
+                <h2 className='username'>{user.username}</h2>
+                <p>"{user.about}"</p>
             </div>
-            <div>
+            <div className='friendList'>
                 <FriendList />
             </div>
-            <div>
+            <div className='gameList'>
                 <GameList />
             </div>
-            <div>
+            <div className='playstyleList'>
                 <PlaystyleList />
             </div>
-            <div>
+            <div className='timeList'>
                 <TimeList />
             </div>
-            <div>
+            <div className='editButton'>
                 <button onClick={() => history.push('/edit')}>
                     Edit Profile
                 </button>
             </div>
-        </>
+        </div>
 
     )
 

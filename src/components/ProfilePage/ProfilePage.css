@@ -1,0 +1,91 @@
+.profile {
+    text-align: center;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 30%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color:darkorchid;
+    width: 700px;
+
+}
+
+.avatar {
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    height: 300px;
+    margin-left: 10px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.avatarImg {
+    background-color: purple;
+    /* text-align: center; */
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    margin-left: 19px;
+    margin-top: 2%;
+}
+
+.username {
+    margin-top: 2px;
+}
+
+.friendList {
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    margin-right: 50px;
+    text-align: left;
+}
+
+.gameList {
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 300px;
+    text-align: left;
+}
+
+.playstyleList {
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    height: 300px;
+    margin-right: 12px;
+    text-align: left;
+}
+.timeList {
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    height: 300px;
+    text-align: left;
+}
+
+.editButton {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

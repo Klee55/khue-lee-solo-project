@@ -4,16 +4,29 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import icon from './controller.jpg'
+import avatar from '../ProfilePage/deadpool.png'
+import home from './home.png';
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
     <div className="nav">
+      {user.id && (
       <Link to="/home">
-        <h2 className="nav-title">Gaming Buddy</h2>
+        <img className="userAvatar" src={avatar} alt="user-avatar" />
       </Link>
-        <img src={icon} alt="controller-icon" width="80" height="80"/>
+      )}
+      <div className='nameIcon'>
+        <h1 className='gaming'>
+          Gaming
+        </h1>
+
+        <img className="icon" src={icon} alt="controller-icon" />
+
+        <h1 className='buddy'>Buddy</h1>
+      </div>
       <div>
         {/* If no user is logged in, show these links */}
         {!user.id && (
@@ -26,19 +39,23 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            {/* <Link  to="/user">
               Home
+            </Link> */}
+            <div className="navLink">
+            <Link to="/home">
+            
+              <img className='iconImg' src={home} />
+              
             </Link>
-
-            <Link className="navLink" to="/home">
-              Real Home
-            </Link>
+            </div>
 
             {/* <Link className="navLink" to="/info">
               Info Page
             </Link> */}
-
-            <LogOutButton className="navLink" />
+            <div className="navLink">
+            <LogOutButton />
+            </div>
           </>
         )}
 

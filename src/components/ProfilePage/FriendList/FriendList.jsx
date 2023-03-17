@@ -6,11 +6,11 @@ const FriendList = () => {
     return (
         <div>
             <ul>
-                Friend List:
+                <h3>Friends</h3>
                 {friends.map((friend) => (
-                    <li key={friend.username}>
+                    <p key={friend.username}>
                         {friend.username}
-                    </li>
+                    </p>
                 ))}
             </ul>
         </div>
