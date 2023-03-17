@@ -23,22 +23,26 @@ const PlayerProfilePage = () => {
         });
     }, []);
 
+    console.log(player);
+
     return (
-        <div className='profile'>
-            <h1>Player Page</h1>
+        <div className='playerProfile'>
             {player.map((player) => (
-                <div key={player.username}>
-                    <h2>{player.username}</h2>
-                    <p>{player.about}</p>
+                <div className="playerInfo" key={player.username}>
+                    <div className="playerAvatarIcon">
+                        <img className="avatarIcon" src={require(`../Avatars/${player.avatar}`)} />
+                    </div>
+                    <h2 className="playerUsername">{player.username}</h2>
+                    <p>"{player.about}"</p>
                 </div>
             ))}
-            <div>
+            <div className='playerGameList'>
                 <PlayerGameList />
             </div>
-            <div>
+            <div className='playstyleList'>
                 <PlayerPlaystyleList />
             </div>
-            <div>
+            <div className='timeList'>
                 <PlayerTimeList />
             </div>
         </div>
@@ -47,3 +51,4 @@ const PlayerProfilePage = () => {
 
 
 export default PlayerProfilePage;
+

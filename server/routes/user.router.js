@@ -18,7 +18,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/players/:id', (req, res) => {
   console.log('fetchPlayer get request made', req.params);
   const id = Number(req.params.id);
-  const queryText = `SELECT "id", "username" FROM "user" EXCEPT SELECT "id", "username" FROM "user" WHERE "id" = $1;`;
+  const queryText = `SELECT "id", "username", "avatar" FROM "user" EXCEPT SELECT "id", "username", "avatar" FROM "user" WHERE "id" = $1;`;
   pool
     .query(queryText, [id])
     .then((results) => {
@@ -32,7 +32,7 @@ router.get('/players/:id', (req, res) => {
 router.get('/player/:id', (req, res) => {
   // console.log('fetchOnePlayer get request made', req.params);
   const id = Number(req.params.id);
-  const queryText = `SELECT "username", "about" FROM "user" WHERE "id" = $1`;
+  const queryText = `SELECT "username", "about", "avatar" FROM "user" WHERE "id" = $1`;
   pool
     .query(queryText, [id])
     .then((results) => {

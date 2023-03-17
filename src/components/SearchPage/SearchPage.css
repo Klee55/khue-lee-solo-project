@@ -1,0 +1,36 @@
+.search {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    text-align: center;
+    height: 500px;
+}
+
+.player {
+    border: solid;
+    border-color: purple;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    height: 250px;
+    margin-left: 10px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+.playerAvatar {
+    background-color: purple;
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    margin-left: 19px;
+    margin-top: 2%;
+}
+
+.avatarIcon {
+    height: 110px;
+    width: 110px;
+    margin-top: 20px;
+}

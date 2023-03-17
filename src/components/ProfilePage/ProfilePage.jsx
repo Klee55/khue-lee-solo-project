@@ -6,7 +6,7 @@ import GameList from './GameList/GameList';
 import PlaystyleList from './PlaystyleList/PlaystyleList';
 import TimeList from './TimeList/TimeList';
 import FriendList from './FriendList/FriendList';
-import avatar from './deadpool.png'
+import avatar from '../Avatars/deadpool.png'
 import './ProfilePage.css';
 
 const ProfilePage = () => {

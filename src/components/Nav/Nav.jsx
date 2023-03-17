@@ -4,7 +4,7 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 import icon from './controller.jpg'
-import avatar from '../ProfilePage/deadpool.png'
+import avatar from '../Avatars/deadpool.png'
 import home from './home.png';
 import person from './person.png';
 

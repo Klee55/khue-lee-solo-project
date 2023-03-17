@@ -6,11 +6,11 @@ const PlayerTimeList = () => {
     return (
         <div>
             <ul>
-                Availabilities:
+                <h3>Availabilities</h3>
                 {userTimes.map((userTime) => (
-                    <li key={userTime.start_time}>
+                    <p key={userTime.start_time}>
                         {userTime.day}: {userTime.start_time} - {userTime.end_time}
-                    </li>
+                    </p>
                 ))}
             </ul>
         </div>

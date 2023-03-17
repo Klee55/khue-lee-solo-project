@@ -1,12 +1,13 @@
 .profile {
     text-align: center;
     display: flex;
-    margin-left: 10px;
-    margin-right: 30%;
+    margin-left:10px;
     justify-content: flex-start;
     flex-wrap: wrap;
     background-color:darkorchid;
     width: 700px;
+    height: 690px;
+    
 
 }
 
@@ -21,11 +22,13 @@
     margin-left: 10px;
     margin-right: 50px;
     text-align: center;
+    padding: 10px;
+    padding: 10px;
+
 }
 
 .avatarImg {
     background-color: purple;
-    /* text-align: center; */
     border-radius: 50%;
     height: 160px;
     width: 160px;

@@ -1,3 +1,50 @@
-.profile {
+.playerProfile {
     text-align: center;
+    display: flex;
+    margin-left:10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color:darkorchid;
+    width: 700px;
+    height: 680px;
+}
+
+.playerGameList {
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 300px;
+    text-align: left;
+}
+
+.playerInfo {
+    border: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: white;
+    margin-top: 10px;
+    width: 200px;
+    height: 300px;
+    margin-left: 10px;
+    margin-right: 300px;
+    text-align: center;
+    padding: 10px;
+}
+
+.playerAvatarIcon {
+    background-color: purple;
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+    margin-left: 19px;
+    margin-top: 2%;
+}
+
+.playerUsername {
+    margin-top: 2px;
 }

@@ -53,7 +53,7 @@ function* fetchPlayers(action) {
     console.log('fetchPlayer saga failed:', error);
   }
 }
-// fetch on player info
+// fetch one player info
 function* fetchOnePlayer(action) {
   try {
     // console.log ('fetchOnePlayer saga hit', action.payload);

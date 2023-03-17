@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
+import './SearchPage.css';
+// import gamer from '../Avatars/gamer.png';
 
 
 const SearchPage = () => {
@@ -10,14 +12,14 @@ const SearchPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log(user);
-
     useEffect(() => {
-        dispatch({ 
+        dispatch({
             type: 'FETCH_PLAYERS',
             payload: user.id
         });
     }, []);
+
+    console.log(players);
 
     // go player profile on clicked
     const viewPlayer = (player) => {
@@ -35,27 +37,24 @@ const SearchPage = () => {
     }
 
 
-
     return (
-        <div>
-            <div>
-                <ul>
-                    {players.map((player) => (
-                        <li key={player.id}>
-                            Player Avatar goes here
-                            <br />
-                            Player Name: {player.username}
-                            <br />
-                            <button onClick={() => addPlayer(player)}>
-                                Add
-                            </button>
-                            <button onClick={() => viewPlayer(player)}>
-                                View Player
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+        <div className="search">
+            {players.map((player) => (
+                <div className="player" key={player.id}>
+                    <div className="playerAvatar">
+                        <img className="avatarIcon" src={require(`../Avatars/${player.avatar}`)} />
+                    </div>
+                    <h3>
+                        {player.username}
+                    </h3>
+                    <button onClick={() => addPlayer(player)}>
+                        Add
+                    </button>
+                    <button onClick={() => viewPlayer(player)}>
+                        View Player
+                    </button>
+                </div>
+            ))}
         </div>
     );
 }
