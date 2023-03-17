@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import icon from './controller.jpg'
 import avatar from '../ProfilePage/deadpool.png'
 import home from './home.png';
+import person from './person.png';
 
 
 function Nav() {
@@ -14,9 +15,14 @@ function Nav() {
   return (
     <div className="nav">
       {user.id && (
-      <Link to="/home">
-        <img className="userAvatar" src={avatar} alt="user-avatar" />
-      </Link>
+        <Link to="/home">
+          <img className="userAvatar" src={avatar} alt="user-avatar" />
+        </Link>
+      )}
+      {!user.id && (
+        <Link to="/home">
+          <img className="userAvatar" src={person} alt="user-avatar" />
+        </Link>
       )}
       <div className='nameIcon'>
         <h1 className='gaming'>
@@ -43,18 +49,18 @@ function Nav() {
               Home
             </Link> */}
             <div className="navLink">
-            <Link to="/home">
-            
-              <img className='iconImg' src={home} />
-              
-            </Link>
+              <Link to="/home">
+
+                <img className='iconImg' src={home} />
+
+              </Link>
             </div>
 
             {/* <Link className="navLink" to="/info">
               Info Page
             </Link> */}
             <div className="navLink">
-            <LogOutButton />
+              <LogOutButton />
             </div>
           </>
         )}
