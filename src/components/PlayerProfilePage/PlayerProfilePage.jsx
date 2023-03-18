@@ -39,10 +39,10 @@ const PlayerProfilePage = () => {
             <div className='playerGameList'>
                 <PlayerGameList />
             </div>
-            <div className='playstyleList'>
+            <div className='playerPlaystyleList'>
                 <PlayerPlaystyleList />
             </div>
-            <div className='timeList'>
+            <div className='playerTimeList'>
                 <PlayerTimeList />
             </div>
         </div>

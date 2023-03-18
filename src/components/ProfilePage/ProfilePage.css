@@ -5,7 +5,7 @@
     justify-content: flex-start;
     flex-wrap: wrap;
     background-color:darkorchid;
-    width: 700px;
+    width: 740px;
     height: 690px;
     
 
@@ -19,12 +19,10 @@
     margin-top: 10px;
     width: 200px;
     height: 300px;
-    margin-left: 10px;
+    margin-left: 25px;
     margin-right: 50px;
     text-align: center;
     padding: 10px;
-    padding: 10px;
-
 }
 
 .avatarImg {
@@ -59,10 +57,12 @@
     background-color: white;
     margin-top: 10px;
     width: 200px;
-    margin-left: 10px;
+    margin-left: 25px;
     margin-right: 10px;
-    height: 300px;
+    height: 250px;
     text-align: left;
+    padding: 10px;
+
 }
 
 .playstyleList {
@@ -72,10 +72,12 @@
     background-color: white;
     margin-top: 10px;
     width: 200px;
-    height: 300px;
+    height: 250px;
     margin-right: 12px;
     text-align: left;
+    padding: 10px;
 }
+
 .timeList {
     border: solid;
     border-color: black;
@@ -83,12 +85,13 @@
     background-color: white;
     margin-top: 10px;
     width: 200px;
-    height: 300px;
+    height: 250px;
     text-align: left;
+    padding: 10px;
 }
 
 .editButton {
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 25px;
     margin-bottom: 10px;
 }

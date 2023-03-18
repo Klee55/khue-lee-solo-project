@@ -28,7 +28,7 @@ const ProfilePage = () => {
         <div className='profile'>
             <div className='avatar'>
                 <div className='avatarImg'>
-                <img  src={avatar} />
+                <img  src={require(`../Avatars/${user.avatar}`)} />
                 </div>
                 <h2 className='username'>{user.username}</h2>
                 <p>"{user.about}"</p>
