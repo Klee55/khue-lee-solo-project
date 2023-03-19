@@ -1,0 +1,11 @@
+.aboutContainer {
+    margin-left: 400px;
+    margin-right: 400px;
+    height: 500px;
+    color: black;
+    background-color: white;
+}
+
+.textContainer {
+    margin-left: 10px;
+}
