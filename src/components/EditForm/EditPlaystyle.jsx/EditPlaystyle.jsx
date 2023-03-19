@@ -54,7 +54,7 @@ const EditPlaystyle = () => {
     }
 
     // remove playstyle from list
-    const removePlaystyle =(userStyle) => {
+    const removePlaystyle = (userStyle) => {
         dispatch({
             type: 'REMOVE_USER_PLAYSTYLE',
             payload: userStyle.playstyle_id
@@ -66,8 +66,9 @@ const EditPlaystyle = () => {
         <div>
             <div>
                 <label htmlFor="playstyle">
-                    Playstyles:
+                    <h3>Playstyles</h3>
                     <select
+                        className="input"
                         type="text"
                         onChange={(event) => setState(event)}>
                         {playstyles.map((style) => (
@@ -82,17 +83,18 @@ const EditPlaystyle = () => {
                 </label>
             </div>
             <div>
-                <ul>
-                    List of Playstyles:
-                    {userPlaystyles.map((userStyle) => (
-                        <li key={userStyle.style}>
-                            {userStyle.style}
-                            <button onClick={() => removePlaystyle(userStyle)}>
-                                Remove
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+                <div className="list">
+                    <ul>
+                        {userPlaystyles.map((userStyle) => (
+                            <li className="listItem" key={userStyle.style}>
+                                {userStyle.style}
+                                <button onClick={() => removePlaystyle(userStyle)}>
+                                    Remove
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     )

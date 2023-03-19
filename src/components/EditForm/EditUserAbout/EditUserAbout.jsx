@@ -28,10 +28,10 @@ const EditUserAbout = () => {
 
     return (
         <>
-            <h1> User Avatar goes here</h1>
+            <h3>About</h3>
             <textarea
+                className="textArea"
                 value={userAbout}
-                style={{width: '70%'}}
                 onChange={(event) => handleChange(event)}>
             </textarea>
             <br/>

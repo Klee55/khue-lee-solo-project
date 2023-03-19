@@ -61,8 +61,9 @@ const EditGame = () => {
         <div>
             <div>
                 <label htmlFor="game">
-                    Game:
+                    <h3>Games:</h3>
                     <select
+                        className="input"
                         type="text"
                         onChange={(event) => setState(event)}>
                         {games.map((game) => (
@@ -77,17 +78,18 @@ const EditGame = () => {
                 </label>
             </div>
             <div>
-                <ul>
-                    List of Games:
-                    {userGames.map((userGame) => (
-                        <li key={userGame.game}>
-                            {userGame.game}
-                            <button onClick={() => removeGame(userGame)}>
-                                Remove
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+                <div className="list">
+                    <ul>
+                        {userGames.map((userGame) => (
+                            <li className="listItem" key={userGame.game}>
+                                {userGame.game}
+                                <button onClick={() => removeGame(userGame)}>
+                                    Remove
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     )

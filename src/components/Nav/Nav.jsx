@@ -15,7 +15,7 @@ function Nav() {
   return (
     <div className="nav">
       {user.id && (
-        <Link to="/home">
+        <Link to="/profile">
           <img className="userAvatar" src={avatar} alt="user-avatar" />
         </Link>
       )}

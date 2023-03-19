@@ -48,60 +48,60 @@ const EditTime = () => {
 
     return (
         <div>
-            <div>
-                <label htmlFor="day">
+            <h3>Availabilities</h3>
+            <div className="timeItem">
+                <label className="day" htmlFor="day">
                     Day:
-                    <select
-                        // placeholder 
-                        type="text"
-                        value={day}
-                        onChange={(event) => setDay(event.target.value)}>
-                        {days.map((day) => (
-                            <option key={day.id}>
-                                {day.day}
-                            </option>
-                        ))}
-                    </select>
                 </label>
+                <select
+                    type="text"
+                    value={day}
+                    onChange={(event) => setDay(event.target.value)}>
+                    {days.map((day) => (
+                        <option key={day.id}>
+                            {day.day}
+                        </option>
+                    ))}
+                </select>
             </div>
-            <div>
-                <label htmlFor="start-time">
+            <br/>
+            <div className="timeItem">
+                <label className="startTime" htmlFor="start-time">
                     Start Time:
-                    <input
-                        type="text"
-                        name="star-time"
-                        value={startTime}
-                        // required
-                        onChange={(event) => setStartTime(event.target.value)}
-                    />
                 </label>
+                <input
+                    type="text"
+                    name="star-time"
+                    value={startTime}
+                    onChange={(event) => setStartTime(event.target.value)}
+                />
             </div>
-            <div>
-                <label htmlFor="end-time">
+            <div className="timeItem">
+                <label className="endTime" htmlFor="end-time">
                     End Time:
-                    <input
-                        type="text"
-                        name="end-time"
-                        value={endTime}
-                        // required
-                        onChange={(event) => setEndTime(event.target.value)}
-                    />
                 </label>
-                <button onClick={addTime}>
-                    Add Day and Time
-                </button>
+                <input
+                    type="text"
+                    name="end-time"
+                    value={endTime}
+                    onChange={(event) => setEndTime(event.target.value)}
+                />
             </div>
-            <ul>
-                Availabilities:
-                {userTimes.map((userTime) => (
-                    <li key={userTime.start_time}>
-                        {userTime.day}: {userTime.start_time} - {userTime.end_time}
-                        <button onClick={() => removeTime(userTime)}>
-                            Remove
-                        </button>
-                    </li>
-                ))}
-            </ul>
+            <button onClick={addTime}>
+                Add Day and Time
+            </button>
+            <div className="list">
+                <ul>
+                    {userTimes.map((userTime) => (
+                        <li className="listItem" key={userTime.start_time}>
+                            {userTime.day}: {userTime.start_time} - {userTime.end_time}
+                            <button onClick={() => removeTime(userTime)}>
+                                Remove
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }
